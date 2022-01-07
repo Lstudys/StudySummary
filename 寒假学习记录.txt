@@ -1,5 +1,10 @@
-1、async await的使用真意
+1、async await的使用真意，promise是微任务，settimeout是宏任务
 2、es6继承使用super的作用与继承机制
 3、JavaScript对象强引用与弱引用
 4、防抖、节流代码实现
 5、Set、weakSet，Map、weakMap
+6、URL和URI的区别
+7、Generator 
+8、React的setState什么时候异步什么时候同步（React事务机制）
+9、Tcp连接原理及流量控制、拥塞控制
+10、npm下载原理
