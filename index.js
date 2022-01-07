@@ -33,3 +33,22 @@ function getNums(){
 }
 
 // 感想：要充分利用闭包
+
+
+// 使用Map
+(function(){
+    const arr = [
+        ['name','李永晖'],
+        ['age','20']
+    ];
+    const myMap = new Map(arr);
+
+    // 传入arr时，执行的算法是：
+    /* arr.forEach(([key,value])=>{
+        myMap.set(key,value);
+    }); 
+    */
+})()
+// 熟练使用Map的set和向构造函数中传入二维数组初始化
+
+
