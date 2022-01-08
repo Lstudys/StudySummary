@@ -7,4 +7,8 @@
 7、Generator 
 8、React的setState什么时候异步什么时候同步（React事务机制）
 9、Tcp连接原理及流量控制、拥塞控制
-10、npm下载原理
+10、npm下载原理（缺省！！！！！！！！）
+11、iframe标签
+12、判断数组三种方法：Array.isArray()，instanceof，object.prototype.toString.call()
+13、性能优化（缺省！！！！！！！！！！！）
+14、JavaScript事件循环和node事件循环区别

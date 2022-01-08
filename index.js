@@ -52,3 +52,53 @@ function getNums(){
 // 熟练使用Map的set和向构造函数中传入二维数组初始化
 
 
+
+// 观察者模式
+function publisher(){
+    this.subscribes = {
+
+    }
+
+    this.addSubscribe = function(fn,type){
+        if(type != ''){
+            if(this.subscribes[type] == ''){
+                this.subscribes[type] = [];
+                this.subscribes[type].push(fn);
+            }
+            else{
+                this.subscribes[type].push(fn);
+            }
+        }
+    }
+
+    this.remove = function(fn,type){
+        if(type != ''){
+            let len = this.subscribes[type].length;
+            for(var i = 0; i < len; i ++){
+                if(this.subscribes[type][i] === fn)
+            }
+        }
+    }
+
+    this.publish = function(type){
+        if(type != ''){
+            let len = this.subscribes[type].length;
+            for(let i = 0; i < len; i ++){
+                this.subscribes[type][i]();
+            }
+        }
+    }
+}
+
+// 实例化
+const pub = new publisher();
+
+// 订阅对象
+const subscribe = {
+    increse: function(){
+        console.log(1);
+    },
+    add:function(){
+        pub.addSubscribe(this.increse,'increse');
+    }
+}
