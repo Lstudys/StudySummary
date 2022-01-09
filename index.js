@@ -102,3 +102,38 @@ const subscribe = {
         pub.addSubscribe(this.increse,'increse');
     }
 }
+
+
+// 遍历DOM节点
+function traverDOM(nodes){
+    if(nodes.nodeType == 1){
+        // 对节点的操作
+        console.log(node);
+    }
+    var childNode = node.childNodes;
+    for(let i = 0; i < childNode.length; i ++){
+        if(childNode[i].nodeType == 1){
+            traverDOM(childNode[i]);
+        }
+    }
+}
+
+
+// 数组扁平化
+// 第一种方法
+const newArr = new Set(Array.from(arr.flat(Infinity)).sort((a,b)=>{return a - b < 0}));
+/**
+ * flat默认扁平化一层，传入Infinity参数则扁平化所有层
+ */
+
+// 第二种方法,使用some方法和concat方法
+function flaten(arr){
+    while(arr.some((num)=>{return Array.isArray(num)})){
+        arr = [].concat(...arr);
+    }
+    return arr;
+    /**
+     * 注意：some不是forEach遍历，而是判断是否存在有符合条件的元素
+     * concat是连接后返回新数组，不更改原数组
+     */
+}

@@ -9,6 +9,32 @@
 9、Tcp连接原理及流量控制、拥塞控制
 10、npm下载原理（缺省！！！！！！！！）
 11、iframe标签
-12、判断数组三种方法：Array.isArray()，instanceof，object.prototype.toString.call()
+12、判断数组三种方法：Array.isArray()，instanceof(基本类型instanceof Number为false)，object.prototype.toString.call()
 13、性能优化（缺省！！！！！！！！！！！）
 14、JavaScript事件循环和node事件循环区别
+15、观察者模式（要清楚观察者模式的好处及与发布订阅模式的区别）
+16、MutaionObserver使用 https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver
+17、DOM的nodeType 属性和childNodes 属性
+18、二叉树
+19、遍历DOM节点demo
+20、操作DOM为什么这么慢（js和DOM是分开的，每次操作DOM需要先连接DOM和JavaScript）
+21、DOM+BOM+emcascript=JavaScript，DOM是用于操作文档的API，BOM是操作浏览器窗口的API
+22、Array flat方法数组扁平化且默认只扁平化一层，传入Infinity参数则转化为一层
+23、Array的some方法和forEach方法区别，concat连接数组后返回新的数组，使用扩展运算符手动扁平化数组
+24、事件冒泡和观察者模式的关系
+25、AST
+26、Vue的data为什么是函数（缺省！！！！！！！！！！！！！）
+27、a.b.c.d比a['b']['c']['d']快
+28、0.1 + 0.2不等于0.3：遵循IEEE754标准的语言都存在的问题，保留两位即可（缺省！！！！！！！！！！！！）
+29、JavaScript构造函数可以通过prototype设置原型属性和方法，实例对象不能；实例对象可以通过__proto__访问它的
+       原型对象（即构造函数），
+       里面有构造函数和prototype(原型对象的原型对象)
+
+
+
+
+
+
+
+
+
