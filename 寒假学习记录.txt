@@ -29,6 +29,16 @@
 29、JavaScript构造函数可以通过prototype设置原型属性和方法，实例对象不能；实例对象可以通过__proto__访问它的
        原型对象（即构造函数），
        里面有构造函数和prototype(原型对象的原型对象)
+30、React.CreateElement创建DOM元素，创建后不可改变，使用JSX语法最终也会通过CreateElement转化为DOM元素
+31、React es6类中的this.num是否作为this.props的属性？（缺省！！！！！！！！！！！！！！）
+32、父子组件间props传值
+33、React useState和UseEffect（缺省！！！！！！！！！！！！！！！）
+34、服务端渲染：在服务端把对应路由的页面拼接好，再挂载到指定位置(即发给客户端)，客户端渲染(传统的前后端分离)：
+        先把静态资源(HTML、css、JavaScript文件)发给前端，再通过脚本获取页面的数据
+35、SPA：和传统前后端分离项目类似，初次渲染把所有静态文件发送到客户端，路由切换都在客户端实现(切换页面不需要再
+        向服务端请求)
+36、Redux回顾：state分散在reducer中，作为一个对象整体，里面的属性是具体状态值；action是整个函数，在reducer
+        中的action.type指的是action发送的数据对象；action向整个reducer发送(即通过combineReducers结合的store)
 
 
 
