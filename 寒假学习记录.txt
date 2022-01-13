@@ -4,7 +4,7 @@
 4、防抖、节流代码实现
 5、Set、weakSet，Map、weakMap
 6、URL和URI的区别
-7、Generator 
+7、Generator （每一段状态是调用next函数时执行的）
 8、React的setState什么时候异步什么时候同步（React事务机制）
 9、Tcp连接原理及流量控制、拥塞控制
 10、npm下载原理（缺省！！！！！！！！）
@@ -27,20 +27,26 @@
 27、a.b.c.d比a['b']['c']['d']快
 28、0.1 + 0.2不等于0.3：遵循IEEE754标准的语言都存在的问题，保留两位即可（缺省！！！！！！！！！！！！）
 29、JavaScript构造函数可以通过prototype设置原型属性和方法，实例对象不能；实例对象可以通过__proto__访问它的
-       原型对象（即构造函数），
-       里面有构造函数和prototype(原型对象的原型对象)
+       原型对象（即构造函数），里面有构造函数和prototype(原型对象的原型对象)
 30、React.CreateElement创建DOM元素，创建后不可改变，使用JSX语法最终也会通过CreateElement转化为DOM元素
 31、React es6类中的this.num是否作为this.props的属性？（缺省！！！！！！！！！！！！！！）
 32、父子组件间props传值
 33、React useState和UseEffect（缺省！！！！！！！！！！！！！！！）
 34、服务端渲染：在服务端把对应路由的页面拼接好，再挂载到指定位置(即发给客户端)，客户端渲染(传统的前后端分离)：
-        先把静态资源(HTML、css、JavaScript文件)发给前端，再通过脚本获取页面的数据
+        先把静态资源(HTML、css、JavaScript文件)发给前端，再通过脚本获取页面的数据（脚本执行地点不一样）
 35、SPA：和传统前后端分离项目类似，初次渲染把所有静态文件发送到客户端，路由切换都在客户端实现(切换页面不需要再
         向服务端请求)
 36、Redux回顾：state分散在reducer中，作为一个对象整体，里面的属性是具体状态值；action是整个函数，在reducer
         中的action.type指的是action发送的数据对象；action向整个reducer发送(即通过combineReducers结合的store)
-
-
+37、SPA路由和SSR路由，子路由的含义(页面局部刷新)，路由的含义，React的BrowserRouter表示路由类型，并不表示路由
+        包裹，路由包裹用Routes标签表示
+38、object的原型对象（__proto__）是NULL，但是prototype是object构造函数
+39、async、await返回promise是执行函数时返回的，需要用变量接着，不是await后面的语句返回的，如果不return，
+        await下面的语句就是promise回调的内容，使用return则显示地返回一个promise对象，return的数据就是promise回调的参数
+40、即使用return则显式返回promise，需要变量接着，不用return则隐式返回，直接调用函数
+41、由上面分析，axios使用await等待后，返回的是响应对象，不是promise对象！！！！！
+42、axios使用await适用单独使用的情况，使用返回promise适用封装axios模块的情况
+43、axios接收的响应对象其实是axios封装后的对象，里面的data才是服务端响应的实际对象
 
 
 
