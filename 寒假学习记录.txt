@@ -31,7 +31,7 @@
 30、React.CreateElement创建DOM元素，创建后不可改变，使用JSX语法最终也会通过CreateElement转化为DOM元素
 31、React es6类中的this.num是否作为this.props的属性？（缺省！！！！！！！！！！！！！！）
 32、父子组件间props传值
-33、React useState和UseEffect（缺省！！！！！！！！！！！！！！！）
+33、React useState和UseEffect
 34、服务端渲染：在服务端把对应路由的页面拼接好，再挂载到指定位置(即发给客户端)，客户端渲染(传统的前后端分离)：
         先把静态资源(HTML、css、JavaScript文件)发给前端，再通过脚本获取页面的数据（脚本执行地点不一样）
 35、SPA：和传统前后端分离项目类似，初次渲染把所有静态文件发送到客户端，路由切换都在客户端实现(切换页面不需要再
@@ -71,6 +71,13 @@
 61、react事务机制（继续深入）
 62、react子组件更新问题：初学者误区：以为父组件render后子组件都要重新渲染。要严格按照组件生命周期函数，组件挂载后，
         重新渲染的条件是：自身state变化和从父组件获取的props变化。render函数的作用更像是把DOM树上有变化的地方做更改
+63、typeof str：string，str instanceof String：false。大小写区别
+64、prototype只有构造函数有，实例对象没有
+65、如果前端没有设置跨域就能跨域，应该是服务端设置了跨域解决方案
+66、通过自己的服务端向其它域请求数据，类似正向代理（本质并不一样）
+67、浏览器发送请求自动携带cookie（必须是客户端和服务端同域）
+68、session
+69、token认证方式
 
 
 
