@@ -80,6 +80,8 @@
 69、token认证方式
 70、事件对象，封装事件的参数，事件流（事件捕获、事件冒泡）https://zhuanlan.zhihu.com/p/90644388，https://www.jianshu.com/p/8d8f9aa4b033
         react合成事件，事件机制
+71、JavaScript整数相除后不会自动取整，结果是小数
+72、vuex中的action异步指的是可以在action中异步请求数据，mutation同步指的是mutation必须同步修改数据
 
 
 
