@@ -82,6 +82,7 @@
         react合成事件，事件机制
 71、JavaScript整数相除后不会自动取整，结果是小数
 72、vuex中的action异步指的是可以在action中异步请求数据，mutation同步指的是mutation必须同步修改数据
+73、箭头函数没有constructor和prototype属性，因此不能使用super且不能改变其this指向，也不能作为构造函数
 
 
 
