@@ -78,8 +78,8 @@
 67、浏览器发送请求自动携带cookie（必须是客户端和服务端同域）
 68、session
 69、token认证方式
-70、事件对象，封装事件的参数，事件捕获、事件冒泡，https://zhuanlan.zhihu.com/p/90644388，https://www.jianshu.com/p/8d8f9aa4b033
-        react合成事件，绑定到document和绑定到DOM
+70、事件对象，封装事件的参数，事件流（事件捕获、事件冒泡）https://zhuanlan.zhihu.com/p/90644388，https://www.jianshu.com/p/8d8f9aa4b033
+        react合成事件，事件机制
 
 
 
