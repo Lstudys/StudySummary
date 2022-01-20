@@ -83,6 +83,9 @@
 71、JavaScript整数相除后不会自动取整，结果是小数
 72、vuex中的action异步指的是可以在action中异步请求数据，mutation同步指的是mutation必须同步修改数据
 73、箭头函数没有constructor和prototype属性，因此不能使用super且不能改变其this指向，也不能作为构造函数
+74、HTTP请求报文和响应报文的头部都是可选的，不设置也行（请求头和响应头）
+75、不设置响应头，返回的数据还是数据的原格式
+76、HTTP持久化连接？设置cookie其实是web应用本身的事，不是服务端设置前端的cookie，原生web应用和react/vue架都是应用本身设置的
 
 
 
