@@ -62,3 +62,30 @@ function sort(arr){
         return arr;
     }
 })()
+
+// 统计字符串中出现最多的字符
+(function(){
+    function findMostStr(str){
+        var container = new Object();
+        for (let i = 0; i < str.length; i ++){
+            if (container[str[i]] != undefined){
+                container[str[i]] ++;
+            }else{
+                container[str[i]] = 1;
+            }
+        }
+        var string = '';
+        var nums = 0;
+        for (let index in container){
+            if (container[index] > nums){
+                string = index;
+                nums = container[index];
+            }
+        }
+        return string;
+    }
+})()
+
+
+// 快速创建从1到100的数组
+var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
