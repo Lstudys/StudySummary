@@ -107,7 +107,7 @@
          exact设置精准匹配，只有URL完全一致才能显示
 92、vue路由hash模式和history模式区别
 93、react PureComponent浅比较state，减少页面刷新
-94、react高阶组件
+94、react高阶组件，redux的connect方法就是高阶组件
 
 
 
