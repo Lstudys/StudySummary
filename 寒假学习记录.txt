@@ -88,10 +88,26 @@
 76、HTTP持久化连接？设置cookie其实是web应用本身的事，不是服务端设置前端的cookie，原生web应用和react/vue架都是应用本身设置的
 77、HTTP请求头就是一些字段，形式是键值对
 78、HTTP报文首部分四种：请求首部、响应首部、通用首部(请求和响应都能用)、实体首部(说明body中内容的信息)
-79、冒泡排序、桶排序、快速排序、选择排序，JavaScript清空数组，去掉数组中的重复元素
+79、冒泡排序、桶排序、快速排序、选择排序，JavaScript清空数组，去掉数组中的重复元素，找出字符串中最多的字符
 80、useEffect和useCallBack并不是引起state变化的原因，而是state变化后的响应者
 81、数组forEach和some等遍历不改变元素值，from传入的回调会改变传入的数组的元素值
-
+82、洗牌算法
+83、react合成事件都可以接收event对象作为参数，定义函数时参数最后一个是event对象
+84、react setState异步更新，具体什么时候更新？答案：回调函数进入任务队列中执行后更新，即当前同步代码执行后
+85、setState传入对象更新会被覆盖，传入函数不会被覆盖
+86、关于异步操作什么时候执行，答案是在同步代码或任务队列执行完之后
+87、react生命周期回顾，constructor在componentWillMount之前执行（不实例化组件怎么执行函数）
+88、受控组件和非受控组件就是看你怎么处理他的值，如果是根据原生DOM的形式获取值，比如input使用ref获取值，就是
+        非受控组件，如果使用输入事件并通过react封装的event事件获取输入的值，它就是受控组件。受控就是产生的值受当前组件
+        的state控制
+89、react context使用
+90、react异步加载组件，多个子组件 不需要同时加载，优化加载效果
+91、react路由的switch和exact。react路由会显示匹配到的路由，URL为/home时/和/home都会展示，使用switch会展示
+        第一个找到的路由，后面的不展示，但是不是精准匹配，比如URL是/home，但是没有home路由，此时会匹配到/或者/:id等，
+         exact设置精准匹配，只有URL完全一致才能显示
+92、vue路由hash模式和history模式区别
+93、react PureComponent浅比较state，减少页面刷新
+94、react高阶组件
 
 
 
