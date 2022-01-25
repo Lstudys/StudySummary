@@ -137,3 +137,39 @@ function flaten(arr){
      * concat是连接后返回新数组，不更改原数组
      */
 }
+
+// react高阶组件
+function connect(App){
+    class newApp extends Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return <App></App>
+        }
+    }
+    // 返回一个类，导出函数执行结果也是这个类
+    return newApp;
+}
+
+// react render props
+class App extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            title:''
+        }
+    }
+
+    render(){
+        return (this.props.render(this.state.title));
+    }
+}
+
+function Container(){
+    function render(title){
+        return <h1>{title}</h1>
+    }
+
+    return (<App render = {render}></App>)
+}

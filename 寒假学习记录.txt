@@ -108,6 +108,12 @@
 92、vue路由hash模式和history模式区别
 93、react PureComponent浅比较state，减少页面刷新
 94、react高阶组件，redux的connect方法就是高阶组件
+95、react render props就是把类和函数的父子组件关系换了一下，函数组件负责展示内容，类组件负责提供数据，可以
+        减少子组件重新render
+96、SPA可理解为胖客户端
+97、webSocket（继续学习）
+98、进程和线程（继续学习）
+99、CORS跨域
 
 
 
