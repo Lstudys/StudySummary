@@ -89,3 +89,24 @@ function sort(arr){
 
 // 快速创建从1到100的数组
 var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
+
+// 数组去重第二版,使用对象做容器，索引是字符串，一定要转化为数字
+(function(){
+    function removeElement(arr){
+        var obj = {};
+        arr.forEach((item) =>{
+            obj[item] = 1;
+        });
+
+        while (arr.length != 0){
+            arr.pop();
+        }
+
+        for (let index in obj){
+            if (obj[index] == 1){
+                arr.push(index);
+            }
+        }
+        return arr;
+    }
+})()
