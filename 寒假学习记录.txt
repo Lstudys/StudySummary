@@ -135,6 +135,8 @@
           原触发事件的对象，currentTarget属性是当前对象，即该函数所在的DOM节点
 111、JavaScript不能手动销毁对象
 112、字符串比较大小按照ASCII码
+113、sessionStorage、cookie、localStorage都是在同源站点使用，cookie有效期是规定时长，sessionStorage是关闭
+          窗口后失效，localStorage是始终存在
 
 
 
