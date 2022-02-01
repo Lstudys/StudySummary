@@ -139,6 +139,7 @@
           窗口后失效，localStorage是始终存在
 114、webSocket是先发送HTTP请求，请求头包含一个upgrade字段，升级为webSocket协议。Pentax的webSocket使用是
           连接上WiFi后可以访问服务端，发送请求，连接后服务端发送数据，客户端处理数据
+115、JavaScript for循环有多个判断条件时，按照分号前一个判断（即根据多个条件的最后一个判断）
 
 
 
