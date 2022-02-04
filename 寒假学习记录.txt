@@ -152,6 +152,12 @@
 124、Outline：元素获取焦点时出现边框，不占据元素位置，没有repaint和reflow。border一直有边框
 125、元素水平居中：text-align设为center，块级元素设置margin auto
 126、文本换行：英文不自动换行，中文自动换行
+127、清除浮动回顾
+128、浮动元素的层级大于不浮动的元素
+129、calc计算CSS长度单位时第二个变量的单位自动和第一个单位一样，不一样会做转化，使用~''包裹就不会自动转化
+130、mvc模式和mvvm模式，区别：mvvm的view和model没有直接交互，mvc的model通知view更新
+131、vue v-model原理：v-bind和输入事件结合
+132、react和vue生命周期中的挂载类似渲染DOM，vue的created类似react的constructor
 
 
 
