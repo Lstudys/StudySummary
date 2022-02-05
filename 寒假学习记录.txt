@@ -158,6 +158,9 @@
 130、mvc模式和mvvm模式，区别：mvvm的view和model没有直接交互，mvc的model通知view更新
 131、vue v-model原理：v-bind和输入事件结合
 132、react和vue生命周期中的挂载类似渲染DOM，vue的created类似react的constructor
+133、vue生命周期创建过程
+134、vue DOM异步更新类似react的state异步更新，vueDOM异步更新实际上是data的异步更新
+135、对象的构造函数到底是什么？就是创建对象时执行的函数，作为对象的constructor属性
 
 
 
