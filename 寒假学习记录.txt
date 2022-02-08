@@ -136,7 +136,7 @@
 111、JavaScript不能手动销毁对象
 112、字符串比较大小按照ASCII码
 113、sessionStorage、cookie、localStorage都是在同源站点使用，cookie有效期是规定时长，sessionStorage是关闭
-          窗口后失效，localStorage是始终存在
+          浏览器后失效，localStorage是始终存在。三者都是同源可使用，另开一个同源窗口也能访问
 114、webSocket是先发送HTTP请求，请求头包含一个upgrade字段，升级为webSocket协议。Pentax的webSocket使用是
           连接上WiFi后可以访问服务端，发送请求，连接后服务端发送数据，客户端处理数据
 115、JavaScript for循环有多个判断条件时，按照分号前一个判断（即根据多个条件的最后一个判断）
@@ -175,6 +175,20 @@
 146、了解vue原理，弄清楚组件本质
 147、在react和vue的生命周期函数中写Ajax请求和DOM操作时，分清楚什么时候能设置数据，什么时候能操作DOM，vue的
           created之后能设置数据，但是此时没有DOM不能操作DOM，mounted之后可以操作DOM
+148、vue keep-alive缓存组件，组件切换后不会销毁，缓存起来，保留数据，可以使用sessionstorage、localstorage等实现。
+          缓存的组件多了两个钩子函数：activited、deactivated，分别是激活和挂起时触发
+149、vue表单修饰符.lazy，.trim过滤空格
+150、react受控组件把input的值存在了state中，用的时候从state中取，非受控组件没有存起来，用的时候通过ref取出来，
+          受控组件更节省性能（操作ref比较耗性能）
+151、promise的then返回的也是一个promise方法，默认是resolve状态，使用return返回数据。返回promise对象的基本都是
+          then回调，async await返回的也是then回调，return返回或者直接写语句。使用axios想写错误时的处理时可以使用回调形式，
+         不需要时使用async await
+152、async await使用axios是等待请求完成并收到响应，并不是等待收到promise，此时axios不会返回promise对象，
+          直接返回响应对象   
+153、CSS解析规则：从由向左，从上到下（CSS树），先找子节点，向上找根节点，减少查找错误的次数
+154、GUI线程和js线程互斥，要弄清楚js线程和GUI线程的作用。js脚本的执行会影响页面渲染（渲染包括DOM、CSS解析等）
+155、GUI线程负责解析DOM、CSSOM和renderTree，所以CSS解析不会影响DOM解析，但是会影响页面渲染速度。
+156、DOMContentLoaded和load
 
 
 
