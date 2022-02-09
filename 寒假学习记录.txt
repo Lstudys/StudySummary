@@ -194,6 +194,8 @@
 159、浏览器强缓存两个字段：cache-control，expires
 160、JavaScript事件委托：把事件绑定到父元素上面，代替子元素做响应。比如点击表格项输出对应元素，把事件绑定到table
           标签上，target熟悉指向的是触发事件的元素，做出响应currentTarget属性指向的是事件绑定的元素
+161、bearer认证和JWT鉴权指的是一回事，都是服务端生成token，客户端保存并在Authorization字段中加上bearer+token
+162、commonjs和module区别：使用区别和加载原理区别
 
 
 
