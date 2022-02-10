@@ -189,13 +189,15 @@
 154、GUI线程和js线程互斥，要弄清楚js线程和GUI线程的作用。js脚本的执行会影响页面渲染（渲染包括DOM、CSS解析等）
 155、GUI线程负责解析DOM、CSSOM和renderTree，所以CSS解析不会影响DOM解析，但是会影响页面渲染速度。
 156、DOMContentLoaded和load
-157、JavaScript使用太try catch捕获异常，和promise等对象的catch捕获异常效果一样，需要捕获异常时使用try catch效果一样
+157、JavaScript使用try catch捕获异常，和promise等对象的catch捕获异常效果一样，需要捕获异常时使用try catch效果一样
 158、HTML标签中的href src link等不受跨域限制，不只有script标签
 159、浏览器强缓存两个字段：cache-control，expires
 160、JavaScript事件委托：把事件绑定到父元素上面，代替子元素做响应。比如点击表格项输出对应元素，把事件绑定到table
           标签上，target熟悉指向的是触发事件的元素，做出响应currentTarget属性指向的是事件绑定的元素
 161、bearer认证和JWT鉴权指的是一回事，都是服务端生成token，客户端保存并在Authorization字段中加上bearer+token
 162、commonjs和module区别：使用区别和加载原理区别
+163、html5新特性，vue原理深入，vuerouter本质，axios相比xhr的优点，水平垂直居中
+164、null instanceof object = false，null并不是从object原型创建的，不属于object，typeof null = object是个bug
 
 
 
