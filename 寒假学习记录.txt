@@ -205,7 +205,8 @@
 168、var val = 'smtg';
 	console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing'); Something
 169、2^53是JavaScript最大的值
-170、JavaScript数组filter等判定方法返回使回调函数返回值为true或等价于true的元素值。未赋值的元素不会调用回调函数
+170、JavaScript数组filter等判定方法返回使回调函数返回值为true或等价于true的元素值（等价于如非零数字和字符串等）。
+          未赋值的元素不会调用回调函数
 171、switch是===判断
 172、String('A')是基本类型（强制类型转换），new String('A')是对象
 173、字符串和数字的算术运算会自动把字符串转化为数字类型，不仅限于加减
