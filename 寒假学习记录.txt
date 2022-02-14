@@ -212,7 +212,13 @@
 173、字符串和数字的算术运算会自动把字符串转化为数字类型，不仅限于加减
 174、Infinity 表示正无穷大
 175、Object.defineProperty，数据代理
-
+176、Object.prototype.toString.call()也可以判断数据类型，不仅限于判断数组。另两种判断数据类型：typeof、instanceof
+177、数组、数字使用toString方法，结果是转化为字符，数组。是把内容转化为字符序列：'1,2,3'。效果和String强制转换一样
+          对象使用String强制转换和176效果一样
+178、Object.prototype.toString.call()不使用call都是object，可能是因为this在Object的原型对象上
+179、Object.prototype.toString.call(2)是Number不是number，可能是绑定this时创建了对象
+180、Object.defineProperty不能对undefined使用，即不能使用变量提升，可以对空对象使用
+181、Object.defineProperty设置set时，不能设置value和writable。（不设置value该属性不出现在大括号中）
 
 
 
