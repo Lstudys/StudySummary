@@ -173,3 +173,18 @@ function Container(){
 
     return (<App render = {render}></App>)
 }
+
+Object.defineProperty(o, 'num', {
+    // value:2,
+    // writable:true,
+    // enumerable:true,
+    // configurable:true,
+    set(value){
+        // 数据代理操作
+    }
+})
+
+Object.prototype.toString.call(arr);
+
+Infinity;
+
