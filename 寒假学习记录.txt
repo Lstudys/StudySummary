@@ -185,7 +185,7 @@
          不需要时使用async await。async await捕获错误使用try catch，和返回promise使用catch效果一样
 152、async await使用axios是等待请求完成并收到响应，并不是等待收到promise，此时axios不会返回promise对象，
           直接返回响应对象   
-153、CSS解析规则：从由向左，从上到下（CSS树），先找子节点，向上找根节点，减少查找错误的次数
+153、CSS解析规则：从右向左，从上到下（CSS树），先找子节点，向上找根节点，减少查找错误的次数
 154、GUI线程和js线程互斥，要弄清楚js线程和GUI线程的作用。js脚本的执行会影响页面渲染（渲染包括DOM、CSS解析等）
 155、GUI线程负责解析DOM、CSSOM和renderTree，所以CSS解析不会影响DOM解析，但是会影响页面渲染速度。
 156、DOMContentLoaded和load
@@ -219,6 +219,7 @@
 179、Object.prototype.toString.call(2)是Number不是number，可能是绑定this时创建了对象
 180、Object.defineProperty不能对undefined使用，即不能使用变量提升，可以对空对象使用
 181、Object.defineProperty设置set时，不能设置value和writable。（不设置value该属性不出现在大括号中）
+182、react事件机制是什么方法控制的？vue数据监听、set等原理？
 
 
 
