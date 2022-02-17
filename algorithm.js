@@ -213,3 +213,29 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return '';
     }
 })()
+
+(function(){
+    function getPublicStr(arr){
+        if (arr.length == 0){
+            return ;
+        }
+        var minStr = arr[0];
+        arr.forEach((item) =>{
+            if (item.length < minStr.length){
+                minStr = item;
+            }
+        });
+
+        var publicStr = '';
+        for (var i = minStr.length; i > 0; i --){
+            publicStr = minStr.substr(0, i);
+            var ifHas = arr.every((item) =>{
+                return item.indexOf(publicStr) == 0;
+            });
+            if (ifHas){
+                return publicStr;
+            }
+        }
+        return '';
+    }
+})()

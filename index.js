@@ -188,3 +188,20 @@ Object.prototype.toString.call(arr);
 
 Infinity;
 
+(function(){
+    var o = {
+        num:2
+    }
+
+    var proxy = {};
+
+    Object.defineProperty(proxy, 'num', {
+        set(value){
+            o.num = value;
+        },
+        get(){
+            return o.num;
+        }
+    });
+})()
+
