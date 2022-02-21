@@ -55,9 +55,9 @@
 49、react props变化不会引起UI刷新，父组件传过来的props值变化会引起UI刷新
 50、页面刷新，即父组件重新render，子组件只是进行update生命周期函数，不会卸载重新创建
 51、useState作用：保留声明的值，函数重新调用后声明的值不会丢失，在useState调用处返回最新值，并且值更新后刷新UI
-52、useEffect作用：第二个参数为空，每次DOM刷新(页面刷新)执行传入的函数，效果类似类组件的didmount和didupdated，
+52、useEffect作用：第二个参数为空，每次DOM刷新(页面刷新)执行传入的函数，效果类似类组件的didupdated，
         第二个参数是[]，只初次挂载时执行，类似didmount,第二个参数为其它变量，只变量变化时执行
-53、*****react组件重新渲染后，子组件重新渲染的条件是：从父组件接收的props是否改变，改变则重新渲染(不管父组件是否重新渲染)
+53、*****react组件重新渲染后，子组件也重新渲染，父组件传来的props变化，如果父组件没有重新render子组件也不会刷新（比如定义变量而不是state）
 54、useCallback 设置传入的函数在第二个参数变化后才更改，以优化性能
 55、关于react性能优化的几点思考：当有多个子组件接收父组件传来的props时，父组件使用useCallback 或父组件使用类组件，
         把父组件的props作为参数传给子组件，props不变，则子组件也不会重新渲染，但是函数组件渲染后属性也是重新创建的，
@@ -221,6 +221,9 @@
 181、Object.defineProperty设置set时，不能设置value和writable。（不设置value该属性不出现在大括号中）
 182、react事件机制是什么方法控制的？vue数据监听、set等原理？
 183、对象使用String强制转换为字符串是['Object Object']，typeof结果是string
+184、react父组件重新render后，子组件也会update。componentWillReceiveProps并不是父组件传入的props变化后子组件更新，
+父组件的变量作为子组件props更新后子组件不会更新。使用shouldComponentUpdate控制当父组件通过props变化情况判断
+刷新后子组件是否刷新。父组件重新render，函数子组件会重新执行。
 
 
 
