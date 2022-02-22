@@ -1,3 +1,4 @@
 1、react函数组件使用useState就是增加了函数组件从内部更新UI的方法
 2、cookie属性：name、value、domain、path、Expires/Max-age、Size、HttpOnly(不能用DOM操作cookie)、Secure(HTTPS)
 3、函数组件刷新，子组件情况？
+4、react useState更新数据是异步的

@@ -40,7 +40,7 @@
         中的action.type指的是action发送的数据对象；action向整个reducer发送(即通过combineReducers结合的store)
 37、SPA路由和SSR路由，子路由的含义(页面局部刷新)，路由的含义，React的BrowserRouter表示路由类型，并不表示路由
         包裹，路由包裹用Routes标签表示
-38、object的原型对象（__proto__）是NULL，但是prototype是object构造函数
+38、object的原型对象（__proto__）不是NULL，但是prototype是object构造函数
 39、async、await返回promise是执行函数时返回的，需要用变量接着，不是await后面的语句返回的，如果不return，
         await下面的语句就是promise回调的内容，使用return则显示地返回一个promise对象，return的数据就是promise回调的参数
 40、即使用return则显式返回promise，需要变量接着，不用return则隐式返回，直接调用函数
@@ -67,7 +67,7 @@
 58、箭头函数的this不能改，且没有super
 59、把函数赋给一个变量时，this指向会改变（对象方法赋给变量，会指向当前作用域最高对象），但是还是指向同一个地址，
         即：this是在执行过程中确定的(箭头函数除外)，作用域链是在定义时确定的
-60、类数组（具备length属性，通过[]访问元素，但不能调用Array对象的方法，argument对象和DOM获取的节点数组）
+60、类数组（具备length属性，通过[]访问元素，但不能调用Array对象的方法，arguments对象和DOM获取的节点数组）
 61、react事务机制（继续深入）
 62、react子组件更新问题：初学者误区：以为父组件render后子组件都要重新渲染。要严格按照组件生命周期函数，组件挂载后，
         重新渲染的条件是：自身state变化和从父组件获取的props变化。render函数的作用更像是把DOM树上有变化的地方做更改
