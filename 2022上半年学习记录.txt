@@ -2,3 +2,12 @@
 2、cookie属性：name、value、domain、path、Expires/Max-age、Size、HttpOnly(不能用DOM操作cookie)、Secure(HTTPS)
 3、函数组件刷新，子组件情况？
 4、react useState更新数据是异步的
+5、react父组件render后不管向子组件传递的props是否变化，都会再传进去一个props对象，可在子组件中使用
+      shouldComponentUpdate判断props是否有变化决定子组件是否render
+6、父组件中向子组件传递props是赋值，并不是绑定，即子组件不会捕捉到父组件传递props的那个变量的变化，所以父组件的
+      变量作为props传递给子组件时子组件并不会重新render。把state作为子组件props会导致子组件render的原因是父组件重新
+       render，子组件又被传递了一次props，即使props没有变化也会执行componentWillReceiveProps钩子
+7、GUI线程渲染页面过程：解析DOM树和CSSOM树，把DOM和CSS树合并成renderTree，reflow/layout（重排）计算几何信息，
+       repaint（重绘）绘制页面。
+8、DOM的几何属性改变会导致重排，然后重绘，非几何属性改变会导致重绘，渲染的四个过程可看作是钩子函数
+9、new运算符：创建空对象并把this引用该对象，把_proto_指向构造函数的原型(prototype)，执行func.call(对象)
