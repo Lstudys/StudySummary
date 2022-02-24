@@ -11,3 +11,8 @@
        repaint（重绘）绘制页面。
 8、DOM的几何属性改变会导致重排，然后重绘，非几何属性改变会导致重绘，渲染的四个过程可看作是钩子函数
 9、new运算符：创建空对象并把this引用该对象，把_proto_指向构造函数的原型(prototype)，执行func.call(对象)
+10、HTML5：语义标签、浏览器存储(localStorage、sessionStorage)、data自定义属性
+11、HTML５data-用法：标签中定义data-article-name，获取该标签的DOM结点，通过dataset属性获取自定义data值，
+        获取后的变量名是驼峰形式的
+12、css @import必须放在其他样式之前使用，否则不会导入
+13、BFC区域不会与浮动元素重叠，即不会覆盖浮动元素
