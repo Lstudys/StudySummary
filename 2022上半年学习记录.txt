@@ -16,3 +16,19 @@
         获取后的变量名是驼峰形式的
 12、css @import必须放在其他样式之前使用，否则不会导入
 13、BFC区域不会与浮动元素重叠，即不会覆盖浮动元素
+14、vue项目启动加载过程
+15、vue生命周期中的各个对象及做的事？
+16、vue组件this的各个属性？$el有什么？vue2和vue3生命周期区别，setup作用？watch、computer属性？
+17、对比react生命周期
+18、vue组件的$el是在beforeMount之后创建的，即挂载时创建的
+19、vue2双向绑定原理？弊端？
+20、$nexttick原理？
+21、JavaScript常用设计模式？
+22、JavaScript全局异常检测？
+23、路由守卫？
+24、vue props和react类似，可组件内定义，可从父组件接收，不能修改。父组件传过来对象时，是浅拷贝
+25、react构造函数能否访问普通变量？可以访问
+26、vue钩子函数什么阶段可以访问什么内容？ 
+27、setup怎么定义watch、computer等属性？
+
+
