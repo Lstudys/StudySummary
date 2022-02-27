@@ -162,7 +162,8 @@
 133、vue生命周期创建过程
 134、vue DOM异步更新类似react的state异步更新，vueDOM异步更新实际上是data的异步更新
 135、对象的构造函数到底是什么？就是创建对象时执行的函数，作为对象的constructor属性
-136、Array的every方法判断数组元素是否都符合某一要求，some是有一个即可，forEach是遍历，无返回值，map是遍历并返回新数组
+136、Array的every方法判断数组元素是否都符合某一要求，some是有一个即可，均返回布尔值，forEach是遍历，
+         无返回值，map是遍历并返回新数组
 137、字符串indexOf方法，substr方法，数组every方法
 138、w3c盒模型和IE盒模型：box-sizing分别对应content-box、border-box
 139、设置overflow为hidden清除浮动是形成了BFC

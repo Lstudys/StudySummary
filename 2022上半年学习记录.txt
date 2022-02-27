@@ -18,7 +18,7 @@
 13、BFC区域不会与浮动元素重叠，即不会覆盖浮动元素
 14、vue项目启动加载过程
 15、vue生命周期中的各个对象及做的事？
-16、vue组件this的各个属性？$el有什么？vue2和vue3生命周期区别，setup作用？watch、computer属性？
+16、vue组件this的各个属性？$el有什么？vue2和vue3生命周期区别
 17、对比react生命周期
 18、vue组件的$el是在beforeMount之后创建的，即挂载时创建的
 19、vue2双向绑定原理？弊端？
@@ -29,6 +29,24 @@
 24、vue props和react类似，可组件内定义，可从父组件接收，不能修改。父组件传过来对象时，是浅拷贝
 25、react构造函数能否访问普通变量？可以访问
 26、vue钩子函数什么阶段可以访问什么内容？ 
-27、setup怎么定义watch、computer等属性？
-
-
+27、setup定义watch、computed属性
+28、vue：watch、computed、filter
+29、vue3 setup的props参数不能使用es6解构是因为props是响应式的，即父组件传来的props变化后子组件收到的props也会变，
+        解构出来的话解构的变量值不会随着props改变而改变，所以需要用toRefs解构 
+30、vue3：computed、watch使用
+31、vue3的computed和在使用本质上没有变化，形式上做了改变。本质上computed多了定义可读写变量
+32、vue3 setup定义响应式对象:通过ref函数赋值，使用变量名.value访问修改变量。基本类型和对象的响应式实现不一样，
+       基本类型通过refImpl实现，对象通过proxy实现
+33、vue3 setup作用：定义vue2中的data、methods、computed、watch等属性，作为钩子函数。注意：setup是在create之前
+        执行的，所以UI刷新后不会执行setup！！！
+34、在setup中通过ref设置的响应式变量，基本类型通过.value访问值，对象通过.value也是访问到值，属性不需要再通过value
+        访问，可直接访问，因为基本类型和对象的响应式实现不同。数组也是对象类型，所以也是通过.value访问值，再通过[]
+        访问元素 
+35、reactive创建响应式对象，不需要写value，语义化更好
+36、es6 proxy给对象添加访问属性的拦截器，可设置所有属性，而object.defineProperty是给对象的一个属性添加拦截器等属性
+37、vue2更改数组值？
+38、观察者模式启发：在观察者对象的构造函数中把该对象添加进观察者集合中，添加方法的参数是实例对象，传参时可以传入
+        this，因为对象中this指的是当前对象的引用
+39、观察者模式参考：https://blog.csdn.net/yexudengzhidao/article/details/90183416
+40、数组push对象，添加进去的是地址，相当于浅拷贝
+41、vue2双向绑定原理：通过观察者模式实现

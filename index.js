@@ -205,3 +205,58 @@ Infinity;
     });
 })()
 
+
+
+// 观察者模式demo练习
+(function(){
+    function subject(){
+        
+        // 数据和观察者集合
+        this.state = {
+            num:2,
+            observers = []
+        };
+
+        // 添加观察者的方法
+        this.append = function(observer){
+            this.state.observers.push(observer);
+        };
+
+        // 通知观察者的方法
+        this.noticeObserver = function(){
+            this.state.observers.forEach((item) =>{
+                item.getNum();
+            })
+        };
+
+        // 删除观察者方法
+        this.removeObserver = function(observer){
+            let index = '';
+            this.state.observers.forEach((item, indexs) =>{
+                if (item == observer){
+                    let index = indexs;
+                }
+            });
+            this.state.observers.splice(index, 1);
+        }
+    }
+
+    function initObserver(subject){
+        subject.append(this);
+
+        this.getNum = function(){
+            console.log(subject.state.num);
+        }
+    }
+
+    function setNum(subject, newNum){
+        subject.state.num = newNum;
+        subject.noticeObserver();
+    }
+
+    var subjects = new subject();
+    var observers = new initObserver()
+    
+    setNum(subjects, 1);
+
+})()
