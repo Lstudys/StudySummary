@@ -260,3 +260,36 @@ Infinity;
     setNum(subjects, 1);
 
 })()
+
+
+
+// 判断数组方法
+ Array.isArray();
+ arr instanceof Array;
+ Object.prototype.toString.call();
+
+ // es6proxy练习
+ (function(){
+     var offer = {
+         name:'阿里巴巴',
+         type:'实习'
+     }
+
+     var proxyOffer = new Proxy(offer, {
+         get:function(target, prop, reciver){
+             if (prop == 'name'){
+                 return '大淘宝';
+             }else if (prop == 'type'){
+                 return '暑期实习';
+             }
+         },
+
+         set:function(target, prop, value, reciver){
+             if (prop == 'type'){
+                 if (value != '正式员工'){
+                     value = '正式员工';
+                 }
+             }
+         }
+     })
+ })()
