@@ -43,8 +43,10 @@
         访问，可直接访问，因为基本类型和对象的响应式实现不同。数组也是对象类型，所以也是通过.value访问值，再通过[]
         访问元素 
 35、reactive创建响应式对象，不需要写value，语义化更好
-36、es6 proxy给对象添加访问属性的拦截器，可设置所有属性，而object.defineProperty是给对象的一个属性添加拦截器等属性
-37、vue2更改数组值？
+36、es6 proxy给对象添加访问属性的拦截器，可设置所有属性，而object.defineProperty是给对象的一个属性添加拦截器等属性。
+        proxy是设置对象原本就有的属性，且生成了一个代理对象，而object.defineProperty是给对象添加一个新属性。vue的$set
+       可能就是封装了object.defineProperty
+37、vue2更改数组值？使用数组方法（vue封装过了）或使用vue.set或this.$set
 38、观察者模式启发：在观察者对象的构造函数中把该对象添加进观察者集合中，添加方法的参数是实例对象，传参时可以传入
         this，因为对象中this指的是当前对象的引用
 39、观察者模式参考：https://blog.csdn.net/yexudengzhidao/article/details/90183416
@@ -58,7 +60,12 @@
 44、vue2响应式缺点：对象直接添加删除属性不会更新UI，数组通过下标修改元素也不会更新UI。解决办法：给对象添加属性
         通过this.$set或vue.set，删除属性通过this.$delete或vue.delete。修改数组元素通过set或$set或者通过数组方法，数组
         方法是vue封装过的
-
+45、分清楚vue响应式原理和双向绑定原理
+46、vue2响应式：初始化时把data的属性全部转为getter和setter，是把同名属性作为vue实例的属性，弄清楚了已经定义的属性
+        怎么通过object.defineProperty 处理
+47、vue2响应式实现：实例化vue对象后，遍历data对象，通过Object.defineProperty把属性添加到实例上面，再进行赋值操作
+        ，当数据变化时，触发setter，接着使用该数据的节点监听到数据变化，更新UI
+48、vue3响应式实现：
 
 
 
