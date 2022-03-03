@@ -239,3 +239,16 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return '';
     }
 })()
+
+
+// 无重复字符的最大字串
+(function(){
+    function getChildStr(str){
+        var lens = [];
+        var len = 1;
+        var child = '';
+        for (var index = 1; index < str.length; index ++){
+            child = 
+        }
+    }
+})()
