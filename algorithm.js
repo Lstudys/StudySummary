@@ -241,14 +241,40 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
 })()
 
 
-// 无重复字符的最大字串
+// 无重复字符的最大子串
 (function(){
     function getChildStr(str){
         var lens = [];
         var len = 1;
-        var child = '';
+        var child = str[0];
         for (var index = 1; index < str.length; index ++){
-            child = 
+            if (child.indexOf(str[index]) == - 1){
+                child += str[index];
+                len ++;
+                if (index == str.length - 1){
+                    lens.push(len);
+                }
+            } else{
+                child = child.substr(child.indexOf(str[index]) + 1, child.length - 1) + str[index];
+                lens.push(len);
+                len = child.length;
+            }
         }
+        lens.sort();
+        return lens[lens.length - 1];
+    }
+})()
+
+
+// 返回整数的逆序字符串
+(function(){
+    function reverse(num){
+        if (num < 10){
+            return `${num}`;
+        }
+        var str = `${num % 10}`;
+        num /= 10;
+        num = Math.trunc(num);
+        return `${str + reverse(num)}`
     }
 })()
