@@ -66,7 +66,8 @@
 47、vue2响应式实现：实例化vue对象后，遍历data对象，通过Object.defineProperty把属性添加到实例上面，如果data的属性
        是对象，则先给实例加一个同名空对象，再使用Object.defineProperty定义属性，再进行赋值操作，当数据变化时，触发
         setter，修改data的数据，接着使用该数据的节点监听到数据变化，更新UI（这一步是在data对象中添加setter来通知节点
-        更新，叫做数据劫持，不是在实例上的代理的setter中添加的监听）
+        更新，叫做数据劫持，不是在实例上的代理的setter中添加的监听），主题对象在属性的setter中，节点的更新函数添加到
+         了主题对象的订阅者集合中
 48、vue3响应式实现：通过Proxy代理对象，而不是vue2的给实例添加同名对象再给对象添加代理属性，通过reflect修改原对象
         属性并进行更新UI操作。代理基本类型方法待定
 49、Object.defineProperty设置属性如果不加value，只设置setter和getter，该属性不算是对象的正常属性，只作为代理作用，
@@ -77,7 +78,8 @@
 51、vue3响应式原理优势：因为Proxy代理的是一个对象，或者说监听的是一个对象，所以能检测所有属性，新加属性时，
         可以直接捕获到并触发setter，进行更新UI操作
 52、‘2’ + 2 = ‘22’。加法是转为字符合并，减法是转为算术运算，不能运算就是NAN
-53、JavaScript数组sort方法参数从小到大排序：function(a, b){return a - b},从大到小：return b - a
+53、JavaScript数组sort方法参数从小到大排序：function(a, b){return a - b},从大到小：return b - a。元素是对象也
+54、双指针问题：根据固定的数找指针位置，不要根据两个指针位置找另一个数
 
 
 
