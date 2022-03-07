@@ -80,6 +80,9 @@
 52、‘2’ + 2 = ‘22’。加法是转为字符合并，减法是转为算术运算，不能运算就是NAN
 53、JavaScript数组sort方法参数从小到大排序：function(a, b){return a - b},从大到小：return b - a。元素是对象也可以
 54、双指针问题：根据固定的数找指针位置，不要根据两个指针位置找另一个数
+55、JavaScript数组：find和findIndex是传入函数，返回符合得元素/索引。indexOf是传入元素，返回元素索引
+56、Map初始化是传入一个数组，键值对也用数组包裹
+57、JavaScript ！：!0是true，!2(非0数字)是false，![]是false，![].length是true。1和0可以替代true、false，一般不用
 
 
 
