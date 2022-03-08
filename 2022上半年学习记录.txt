@@ -80,10 +80,19 @@
 52、‘2’ + 2 = ‘22’。加法是转为字符合并，减法是转为算术运算，不能运算就是NAN
 53、JavaScript数组sort方法参数从小到大排序：function(a, b){return a - b},从大到小：return b - a。元素是对象也可以
 54、双指针问题：根据固定的数找指针位置，不要根据两个指针位置找另一个数
-55、JavaScript数组：find和findIndex是传入函数，返回符合得元素/索引。indexOf是传入元素，返回元素索引
+55、JavaScript数组：find和findIndex是传入函数，返回符合得元素的索引。indexOf是传入元素，返回元素索引
 56、Map初始化是传入一个数组，键值对也用数组包裹
 57、JavaScript ！：!0是true，!2(非0数字)是false，![]是false，![].length是true。1和0可以替代true、false，一般不用
-
+58、Object.getprototypeOf()获取对象的原型。Object的原型是null
+59、NAN是number类型，typeof NAN是number。isNAN()将参数转为number判断（非NAN的数字），number.isNAN()先
+        判断是否是number类型再转为number(非NAN的数字)，number.isNAN更准确
+60、new Array(2)，初始化长度为2的空数组（length属性为2，实际上是空数组）
+61、undefined是不知道是什么类型，可能是基本类型也可能是引用类型，null是指明了是指向引用的数据类型，但是现在没有指向，
+        undefi的变量作为全局对象的属性，null不作为全局对象的属性
+62、观察者模式存储观察者的集合是直接存储观察者，发布订阅模式存储的是根据type分类的观察者数组
+63、async await中await并不会阻塞函数外的同步代码的执行
+64、0、undefined、null、NAN、''都是false，[]不是false，数组是引用类型，变量有指向所以不是false
+65、Generator的yield表达式没有返回值，next方法的参数就是上一个yield表达式的返回值，在yield表达式需要返回一个值时用到
 
 
                   
