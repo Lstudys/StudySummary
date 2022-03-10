@@ -278,3 +278,19 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return `${str + reverse(num)}`
     }
 })()
+
+
+// 斐波那契数列第n项
+(function(){
+    function getNthNumber(n){
+        var num1 = 1;
+        var ans = 2;
+        var x = ans;
+        for (var i = 2; i <= n; i ++){
+            x = ans;
+            ans = ans + num1;
+            num1 = ans;
+        }
+        return ans;
+    }
+})()
