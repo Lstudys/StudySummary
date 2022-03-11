@@ -95,7 +95,12 @@
 64、0、undefined、null、NAN、''都是false，[]不是false，数组是引用类型，变量有指向所以不是false
 65、Generator的yield表达式没有返回值，next方法的参数就是上一个yield表达式的返回值，在yield表达式需要返回一个值时用到
 66、axios发送请求，如果只写路径，协议默认使用地址栏的协议，写完整路径，协议使用URL的协议
-67、HTTP协商缓存：
+67、HTTP缓存：强缓存通过设置Cache-Control字段的max-age或设置Expires字段设置资源过期时间设置强缓存。
+        协商缓存：通过设置Cache-Control字段为no-cache设置使用协商缓存，并且服务端要设置Last-Modified字段(客户端对应字段
+        是if-Modified-Since或者Etag(客户端对应是if-None-Match)进行对比资源是否过期
+68、CDN加速原理
+69、常用HTTP头字段：accept相关（text/plain），cookie，Authorization ，origin，content-type(请求体的媒体类型)，
+        Cache-Control
 
 
                   
