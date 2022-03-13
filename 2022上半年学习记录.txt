@@ -101,6 +101,7 @@
 68、CDN加速原理
 69、常用HTTP头字段：accept相关（text/plain），cookie，Authorization ，origin，content-type(请求体的媒体类型)，
         Cache-Control
+70、window.onerror，参数：错误信息字符串，错误所在脚本URL(文件)，错误所在行号，错误所在列号，错误对象
 
 
                   
