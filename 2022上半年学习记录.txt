@@ -102,6 +102,11 @@
 69、常用HTTP头字段：accept相关（text/plain），cookie，Authorization ，origin，content-type(请求体的媒体类型)，
         Cache-Control
 70、window.onerror，参数：错误信息字符串，错误所在脚本URL(文件)，错误所在行号，错误所在列号，错误对象
+71、闭包中的作用域：1、没有var声明的变量也作为全局变量，2、块级作用域，3、闭包函数不可修改
+72、var obj = {}, obj = {num:1}，此时obj的指向改变，和obj = new Object()效果一样
+73、对象 . 运算符优先级大于赋值运算符
+74、es6 class使用typeof判断，返回结果是function，es6类的类型就是function，tostring结果是function
+75、es6类也可以通过prototype设置原型对象
 
 
                   

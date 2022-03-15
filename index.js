@@ -293,3 +293,16 @@ Infinity;
          }
      })
  })()
+
+// new
+ (function(){
+     function newObj(fun, ...arr){
+         var newObject = {};
+         newObject._proto_ = fun.prototype;
+         var newObject2 = fun.apply(newObject, arr);
+         if ((typeof newObject2 === 'object' || typeof newObject2 === 'function') && newObject2 != null){
+             return newObject2;
+         }
+         return newObject;
+     }
+ })()
