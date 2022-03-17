@@ -107,6 +107,12 @@
 73、对象 . 运算符优先级大于赋值运算符
 74、es6 class使用typeof判断，返回结果是function，es6类的类型就是function，tostring结果是function
 75、es6类也可以通过prototype设置原型对象
+76、浏览器默认行为指的是点击a标签跳转、表单回车提交等行为，react-route的link是封装了a标签，把to等参数合成href，
+        link负责变更当前URL，route负责根据URL渲染对应组件
+77、vueRouter和reactRouter的区别体现在vue集中管理路由，react由父组件动态分配路由（即在需要使用路由的地方使用Route
+        标签声明路由组件）
+78、垃圾回收机制：标记清除法，引用计数法（对象不再使用时把引用设为null，不是js引擎自动识别使用不使用）
+79、XMLHttpRequest四个状态、open/send等方法
 
 
                   
