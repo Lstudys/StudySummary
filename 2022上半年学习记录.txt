@@ -116,6 +116,9 @@
         响应头，4：收到响应体
 80、JavaScript数组截取元素的方法都包含左边不包含右边
 81、JavaScript Math的max和min参数可以是任意多个
+82、typeof得返回结果是字符串类型
+83、es6 proxy的set返回原对象的属性时不能直接target.prop，prop不会转为属性名，会找名为prop的属性
+84、es6 Reflect对象用于获取和设置代理对象的属性，和Proxy内部使用
 
 
                   
