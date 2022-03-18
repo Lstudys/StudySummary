@@ -112,7 +112,10 @@
 77、vueRouter和reactRouter的区别体现在vue集中管理路由，react由父组件动态分配路由（即在需要使用路由的地方使用Route
         标签声明路由组件）
 78、垃圾回收机制：标记清除法，引用计数法（对象不再使用时把引用设为null，不是js引擎自动识别使用不使用）
-79、XMLHttpRequest四个状态、open/send等方法
+79、XMLHttpRequest四个状态、open/send等方法。0：创建xhr对象，1：初始化参数(open)，2：发送请求(send)，3：收到
+        响应头，4：收到响应体
+80、JavaScript数组截取元素的方法都包含左边不包含右边
+81、JavaScript Math的max和min参数可以是任意多个
 
 
                   

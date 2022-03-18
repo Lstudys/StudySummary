@@ -294,3 +294,41 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return ans;
     }
 })()
+
+// 归并排序
+(function(){
+    function mergeSort(arr){
+        var len = arr.length;
+        if (len < 2){
+            return arr;
+        }
+
+        var middle = Math.floor(len / 2);
+        var left = arr.slice(0, middle);
+        var right = arr.slice(middle);
+
+        return merge(mergeSort(left), mergeSort(right));
+    }
+
+    function merge(left, right){
+        var newArr = [];
+
+        while (left.length && right.length){
+            if (left[0] < right[0]){
+                newArr.push(left.shift());
+            } else {
+                newArr.push(right.shift());
+            }
+        }
+
+        while (left.length){
+            newArr.push(left.shift());
+        }
+
+        while (right.length){
+            newArr.push(right.shift());
+        }
+
+        return newArr;
+    }
+})()
