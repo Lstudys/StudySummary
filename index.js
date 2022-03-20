@@ -306,3 +306,33 @@ Infinity;
          return newObject;
      }
  })()
+
+ // Promise.all
+ (function(){
+     var p1 = new Promise(function(resolve, reject){
+         resolve('promise1');
+     });
+     var p2 = new Promise(function(resolve, reject){
+         resolve('promise');
+     })
+
+     var p3 = new Promise(function(resolve, reject){
+         reject('reject1');
+     })
+
+     var p4 = new Promise(function(resolve, reject){
+         reject('reject2');
+     })
+
+     Promise.all([p1, p2]).then((res) =>{
+         console.log(res); // ['promise1', 'promise2']
+     }).catch((eror) =>{
+         console.log(error);
+     });
+
+     Promise.all([p1, p2, p3, p4]).then((res) =>{
+         console.log(res);
+     }).catch((error) =>{
+         console.log(error); // ['reject1']
+     })
+ })()

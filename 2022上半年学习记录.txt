@@ -126,6 +126,10 @@
 87、let声明的变量不作为全局对象的属性，而且不作为变量对象的属性
 88、JavaScript数组splice方法添加元素时第二个参数为0，添加位置是下标前面，即取代第1个参数对应的元素
 89、删除数组第一个元素：splice(0, 1) 或 shift
+90、Promise.all，promise数组中有一个reject就执行catch，且后面的promise都不执行。resolve的结果和执行完成的顺序不一样，
+        和传入的参数顺序一样
+91、promise的resolve、reject、all、race等方法都可直接使用，类似静态方法
+92、promise.race传入多个promise对象，哪个先resolve或reject就执行哪个回调
 
 
                   
