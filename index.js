@@ -336,3 +336,28 @@ Infinity;
          console.log(error); // ['reject1']
      })
  })()
+
+
+
+ (function(){
+     class App extends Component{
+         constructor(props){
+             super(props);
+             this.state = {
+                 title: 'title'
+             }
+         }
+
+         render(){
+             return (this.props.render(this.state.title));
+         }
+     }
+
+     function Container(){
+         function render(title){
+             return <p>{title}</p>
+         }
+
+         return <App render = {render}></App>
+     }
+ })()

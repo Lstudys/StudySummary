@@ -130,6 +130,8 @@
         和传入的参数顺序一样
 91、promise的resolve、reject、all、race等方法都可直接使用，类似静态方法
 92、promise.race传入多个promise对象，哪个先resolve或reject就执行哪个回调
+93、react类组件传递属性直接传入，通过props获取；函数组件传递属性通过定义组件时定义参数传入。{prop}传入一个对象然后解构出来
+    一个属性，...arr传入一些任意多个属性，不是传入数组 
 
 
                   
