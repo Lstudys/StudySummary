@@ -24,7 +24,7 @@
 19、vue2双向绑定原理？弊端？
 20、$nexttick原理？
 21、JavaScript常用设计模式？
-22、JavaScript全局异常检测？
+22、JavaScript全局异常检测，window.onerror
 23、路由守卫？
 24、vue props和react类似，可组件内定义，可从父组件接收，不能修改。父组件传过来对象时，是浅拷贝
 25、react构造函数能否访问普通变量？可以访问
@@ -84,7 +84,7 @@
 56、Map初始化是传入一个数组，键值对也用数组包裹
 57、JavaScript ！：!0是true，!2(非0数字)是false，![]是false，![].length是true。1和0可以替代true、false，一般不用
 58、Object.getprototypeOf()获取对象的原型。Object的原型是null
-59、NAN是number类型，typeof NAN是number。isNAN()将参数转为number判断（非NAN的数字），number.isNAN()先
+59、NAN是number类型，typeof NAN是number。isNAN()将参数转为number判断（非NAN的数字），Number.isNAN()先
         判断是否是number类型再转为number(非NAN的数字)，number.isNAN更准确
 60、new Array(2)，初始化长度为2的空数组（length属性为2，实际上是空数组）
 61、undefined是不知道是什么类型，可能是基本类型也可能是引用类型，null是指明了是指向引用的数据类型，但是现在没有指向，
@@ -92,8 +92,9 @@
 62、观察者模式存储观察者的集合是直接存储观察者，发布订阅模式存储的是根据type分类的观察者数组
 63、async await中await后如果是同步语句就执行，如果是异步任务就正常异步任务，异步任务不会被等待执行，还是在处理异步
         任务的线程中执行的。（await后面的语句只是正常执行而已）
-64、0、undefined、null、NAN、''都是false，[]不是false，数组是引用类型，变量有指向所以不是false
+64、0、undefined、null、NAN、''都是false，[]不是false（有争议），数组是引用类型，变量有指向所以不是false
 65、Generator的yield表达式没有返回值，next方法的参数就是上一个yield表达式的返回值，在yield表达式需要返回一个值时用到
+        yield没有返回值即不能把它返回的数据内容赋值给变量，返回内容是给next函数的
 66、axios发送请求，如果只写路径，协议默认使用地址栏的协议，写完整路径，协议使用URL的协议
 67、HTTP缓存：强缓存通过设置Cache-Control字段的max-age或设置Expires字段设置资源过期时间设置强缓存。
         协商缓存：通过设置Cache-Control字段为no-cache设置使用协商缓存，并且服务端要设置Last-Modified字段(客户端对应字段
@@ -102,7 +103,7 @@
 69、常用HTTP头字段：accept相关（text/plain），cookie，Authorization ，origin，content-type(请求体的媒体类型)，
         Cache-Control
 70、window.onerror，参数：错误信息字符串，错误所在脚本URL(文件)，错误所在行号，错误所在列号，错误对象
-71、闭包中的作用域：1、没有var声明的变量也作为全局变量，2、块级作用域，3、闭包函数不可修改
+71、iife（立即执行函数）中的作用域：1、没有var声明的变量也作为全局变量，2、块级作用域，3、闭包函数不可修改
 72、var obj = {}, obj = {num:1}，此时obj的指向改变，和obj = new Object()效果一样
 73、对象 . 运算符优先级大于赋值运算符
 74、es6 class使用typeof判断，返回结果是function，es6类的类型就是function，tostring结果是function
@@ -116,7 +117,7 @@
         响应头，4：收到响应体
 80、JavaScript数组截取元素的方法都包含左边不包含右边
 81、JavaScript Math的max和min参数可以是任意多个
-82、typeof得返回结果是字符串类型
+82、typeof的返回结果是字符串类型
 83、es6 proxy的set返回原对象的属性时不能直接target.prop，prop不会转为属性名，会找名为prop的属性
 84、es6 Reflect对象用于获取和设置代理对象的属性，和Proxy内部使用
 85、JavaScript作用域链是创建函数时确定的！！！函数有一个scope属性，包含了函数能访问的外部的对象，闭包就是这样产生的
@@ -134,6 +135,22 @@
     一个属性，...arr传入一些任意多个属性，不是传入数组 
 94、JavaScript数组push方法返回新的长度
 95、promise.all传入空数组也会执行then，参数是空数组。promise.race传入空数组不会执行但是会返回promise对象
-
+96、JavaScript箭头函数没有prototype属性，所以无法作为构造函数，也不能作为generator，不能改变this指向
+97、JavaScript箭头函数定义时的最高对象是window对象，在对象方法中定义是最高对象是该对象
+98、JavaScript Promise.race传入promise对象时不再执行内部代码，调用then时也不执行，只是定义promise对象时执行一次，
+         调用then时根据定义对象时的执行顺序决定使用哪个resolve的值。牢记：Promise对象只在创建时执行，之后不会再次执行
+         并且状态不会改变
+99、es6扩展运算符只能对具有Iterator 接口的对象使用
+100、Iterator作用：使集合中的不同类型的对象可以依次访问，即按某种顺序遍历。返回一个对象，该对象有一个next方法，返回
+          一个对象：{value, done}。
+101、Array.of把一组值转为数组
+102、es6对象属性名和方法的简写形式、属性名表达式、super指向对象的原型对象
+103、闭包是函数的scope属性形成的，使用闭包场景：一些变量不希望被别人直接访问修改，定义一个方法并返回，通过此方法
+          访问或修改变量
+104、数组join方法把数组转换为字符串，默认以逗号分隔（返回类型是基本类型不是对象），valueOf方法
+105、Obje.keys和Obje.values分别返回对象的键和值（必须是可遍历的属性），必须是自身属性，不含原型链上的。返回结果
+          是数组形式
+106、声明式编程和命令式编程
+107、表达式是有返回值的，语句没有返回值
 
                   

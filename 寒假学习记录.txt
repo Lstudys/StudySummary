@@ -211,7 +211,7 @@
           未赋值的元素不会调用回调函数
 171、switch是===判断
 172、String('A')是基本类型（强制类型转换），new String('A')是对象
-173、字符串和数字的算术运算会自动把字符串转化为数字类型，不仅限于加减
+173、字符串和数字的算术运算(乘除等)会自动把字符串转化为数字类型，不仅限于加减
 174、Infinity 表示正无穷大
 175、Object.defineProperty，数据代理
 176、Object.prototype.toString.call()也可以判断数据类型，不仅限于判断数组。另两种判断数据类型：typeof、instanceof
