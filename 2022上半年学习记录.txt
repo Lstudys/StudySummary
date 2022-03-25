@@ -152,5 +152,20 @@
           是数组形式
 106、声明式编程和命令式编程
 107、表达式是有返回值的，语句没有返回值
+108、React虚拟DOM相关：虚拟DOM是描述真实DOM的js对象，通过React的createElement方法创建虚拟DOM，通过ReactDOM
+          的render方法把虚拟DOM挂载到真实DOM上，JSX语法是语法糖，简单的写虚拟DOM的配置对象，通过Babel转化为调用
+           createElement方法的形式
+109、getDerivedStateFromProps替代componentWillMount和componentWillReceiveProps，两个参数分别是nextprops和
+           preState，主要在组件state和props有关联时使用，即当前组件的state由props决定，props由父组件传递而来
+110、es6的class的constructor可以定义一些参数，初始化时传入，super就是调用了父类的构造函数，把父类的this传给了
+          子类（大概是这样），所以子类可以使用父类方法和属性。原型链应该也是跟this有关
+111、react setState传入对象覆盖的情况只出现在react合成的事件中，原生事件不会出现覆盖情况且是同步更新
+112、react、vue列表加key把数据和组件绑定起来（个人理解）
+113、redux中间件是在发送action之后到reducer执行之前进行拦截，做出一些操作
+114、回顾react route的exact属性和switch属性
+115、通过路由router包裹的组件，就可以接收一些路由相关的属性，类组件就从props中获取，函数组件就从参数中获取（解构）
+116、SPA：react根组件是通过ReactDOM的render方法挂载到index.html文件中的div标签上的；类似胖客户端；可以改变URL、
+          改变页面组件显示而不像服务器发送请求且不重新渲染页面。多页面（MPA）会刷新真个页面，包括公共资源
+117、react router两种模式原理（history原理和BOM）
 
                   
