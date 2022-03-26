@@ -373,3 +373,15 @@ Infinity;
          }
      }
  })()
+
+(function(){
+    function makeCahce(){
+        var num;
+        return function(newNum){
+            num = newNum;
+        }
+    }
+
+    var fn = makeCahce();
+    fn(1);
+})()

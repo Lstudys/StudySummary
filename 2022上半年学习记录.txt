@@ -167,5 +167,7 @@
 116、SPA：react根组件是通过ReactDOM的render方法挂载到index.html文件中的div标签上的；类似胖客户端；可以改变URL、
           改变页面组件显示而不像服务器发送请求且不重新渲染页面。多页面（MPA）会刷新真个页面，包括公共资源
 117、react router两种模式原理（history原理和BOM）
+118、localStorage不能直接存储对象，只能存储字符
+119、函数缓存，利用闭包实现
 
                   
