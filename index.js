@@ -376,12 +376,41 @@ Infinity;
 
 (function(){
     function makeCahce(){
-        var num;
-        return function(newNum){
-            num = newNum;
+        var map = new Map();
+        return function(num1, num2){
+            if ()
         }
     }
 
     var fn = makeCahce();
     fn(1);
+})()
+
+
+// 节流
+(function(){
+    function fn(time){
+        var startTime = Date.now();
+        var delayTime = time;
+        return function(){
+            if (Date.now() - startTime >= delayTime){
+                console.log('执行');
+                startTime = Date.now();
+            }
+        }
+    }
+})()
+
+// 防抖
+(function(){
+    function fn(time){
+        var delayTime = time;
+        var timeout;
+        return function(){
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                console.log('执行');
+            }, delayTime);
+        }
+    }
 })()
