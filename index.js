@@ -414,3 +414,31 @@ Infinity;
         }
     }
 })()
+
+// 防抖
+(function(){
+    function fn(time){
+        var timeout;
+        var delayTime = time;
+        return function(){
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+               console.log('执行'); 
+            }, delayTime);
+        }
+    }
+})()
+
+// 节流
+(function(){
+    function fn(time){
+        var delayTime = time;
+        var nowTime = Date.now();
+        return function(){
+            if (Date.now() - nowTime > delayTime){
+                console,log('执行');
+                nowTime = Date.now();
+            }
+        }
+    }
+})()
