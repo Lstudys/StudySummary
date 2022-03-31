@@ -442,3 +442,30 @@ Infinity;
         }
     }
 })()
+
+// 深拷贝
+(function(){
+    function deepCopy(obj){
+        var o = {};
+        if (!(obj instanceof Object)){
+            return obj;
+        }
+
+        for (var item in obj){
+
+            o[item] = deepCopy(obj[item]);
+        }
+        return o;
+    }
+})()
+
+
+// new
+(function(){
+    function news(fn, ...prop){
+        var newObj = {};
+        newObj._proto_ = fn.prototype;
+        var o2 = fn.call(newObj, ...prop);
+        return o2 instanceof Object ? o2 : newObj;
+    }
+})()
