@@ -469,3 +469,12 @@ Infinity;
         return o2 instanceof Object ? o2 : newObj;
     }
 })()
+
+(function(){
+    function news(fn, ...arr){
+        var newObj = {};
+        newObj._proto_ = fn.prototype;
+        var o = fn.apply(newObj, arr); // 如果构造函数fn有return值，则o为return的对象，没有return则o为undefined，newObj为执行后的对象
+        return o instanceof Object ? o : newObj;
+    }
+})()
