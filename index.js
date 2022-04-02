@@ -478,3 +478,63 @@ Infinity;
         return o instanceof Object ? o : newObj;
     }
 })()
+
+// 深拷贝
+(function(){
+    function deepCopy(obj){
+        if (!(obj instanceof Object)){
+            return obj;
+        }
+        var newObj = {};
+        for (var item in obj){
+            newObj[item] = deepCopy(obj[item]);
+        }
+        return newObj;
+    }
+})()
+
+// 函数缓存
+(function(){
+    function mkChche(){
+        var data = {};
+        return function(){
+            // do something
+        }
+    }
+})()
+
+// 实现Promise.all
+(function(){
+    function promiseAll(arr){
+        if (!arr.length){
+            // do something
+        }
+
+        return new Promise((resolve, reject) =>{
+            var ans;
+            for (var item of arr){
+                item.then(data =>{
+                    ans.push(data);
+                })
+            }
+            resolve(ans);
+        })
+    }
+})()
+
+(function(){
+    function promiseRace(arr){
+        if (!arr.length){
+            return;
+        }
+        
+        return new Promise((resolve, reject) =>{
+            for (var item of arr){
+                item.then(data =>{
+                    resolve(data);
+                    return;
+                })
+            }
+        })
+    }
+})()
