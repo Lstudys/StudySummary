@@ -522,12 +522,51 @@ Infinity;
     }
 })()
 
+// promise.race
 (function(){
     function promiseRace(arr){
         if (!arr.length){
             return;
         }
         
+        return new Promise((resolve, reject) =>{
+            for (var item of arr){
+                item.then(data =>{
+                    resolve(data);
+                    return;
+                })
+            }
+        })
+    }
+})()
+
+// promise.all
+(function(){
+    function promiseAll(arr){
+        if (!arr.length){
+            return new Promise((resolve, reject) =>{
+                resolve([]);
+            })
+        }
+
+        var datas = [];
+        return new Promise((resolve, reject) =>{
+            for (var item of arr){
+                item.then(data =>{
+                    datas.push(data);
+                });
+            }
+        })
+    }
+})()
+
+// promise.race
+(function(){
+    function promiseRace(arr){
+        if (!arr.length){
+            return;
+        }
+
         return new Promise((resolve, reject) =>{
             for (var item of arr){
                 item.then(data =>{
