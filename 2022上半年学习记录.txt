@@ -55,8 +55,8 @@
 42、 Object.prototype.toString.call()原理：把object原型的toString方法绑定到(call的作用)括号内的对象上，返回的就是
         对应的数据类型，基本类型返回的是对应的对象类型，因为是函数调用，会临时创建一个对象，所以是对象类型，无法判断
         是否是基本类型。不加call函数，返回的都是Object，可能是this在prototype上的原因
-43、es6proxy的set函数不能修改value，即只能接收设置的值并作出一些相应，而不能修改设置的值！！！object.defineProperty
-        的set应该也是。（但是可以设置原对象的值，通过target参数）
+43、es6proxy的set函数不能修改value，即只能接收设置的值并作出一些响应，而不能修改设置的值！！！object.defineProperty
+        的set应该也是。（但是可以设置原对象的值，通过target参数）？？？
 44、vue2响应式缺点：对象直接添加删除属性不会更新UI，数组通过下标修改元素也不会更新UI。解决办法：给对象添加属性
         通过this.$set或vue.set，删除属性通过this.$delete或vue.delete。修改数组元素通过set或$set或者通过数组方法，数组
         方法是vue封装过的
@@ -211,4 +211,5 @@
 145、webSocket连接是自动建立的，即实例化一个webSocket对象时建立的（客户端会自动与服务端建立连接）
 146、reactRouter和vueRouter的区别可从声明式和命令式编程的角度来理解
 147、Number()可以把参数转化为数字类型，如果参数是字符数字则转化为对应数字，如果是字符转为NAN
+148、再次确定：作用域链是在创建时确定的，是静态的，不会在调用函数时受影响
                   
