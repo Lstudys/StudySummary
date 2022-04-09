@@ -219,4 +219,6 @@
 151、useState是异步更新state的
 152、react子路由设置时不用加上父路由的路径，子路由本来就是相对父路由的路径的
 153、JavaScript对象通过[]获取方法再通过（）调用方法
+154、手写JavaScript内置的一些函数，获取参数通过arguements对象获取，形式参数是规定的参数，arguements是实际的参数
+155、arguments不是数组不能用数组方法，有iterater接口，可以用展开运算符展开
                   

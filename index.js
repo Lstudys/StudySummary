@@ -577,3 +577,16 @@ Infinity;
         })
     }
 })()
+
+// 实现bind
+(function(){
+    Function.prototype.mybind = function(){
+        var context = arguments[0];
+        var self = this; // this指向当前函数，因为是Function原型上的方法，this指向当前实例，即当前函数
+        // var arr = arguments.splice(1, - 1); // arguments不是数组不能使用slice方法
+        var arr = Array.from(arguments).slice(1, - 1);
+        return function(){
+            selt.call(context, ...arr);
+        }
+    }
+})()
