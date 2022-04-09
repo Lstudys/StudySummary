@@ -590,3 +590,71 @@ Infinity;
         }
     }
 })()
+
+// 回顾实现bind方法
+(function(){
+    Function.prototype.mybind = function(){
+        var self = this;
+        var context = arguments[0];
+        var arr = Array.from(arguments).slice(1, - 1);
+        return function(){
+            self.apply(context, arr);
+        }
+    }
+
+    Function.prototype.newBind = function(context, ...arr){
+        var fn = this;
+        return function(){
+            fn.apply(context, arr);
+        }
+    }
+})()
+
+(function(){
+    var obj = {
+        num:1,
+        fn:function(){
+            console.log(this.num);
+        }
+    }
+
+    obj['fn'](); // 调用fn方法
+
+    var name = 'window'
+    var obj2 = {
+        name:'object',
+        fn:function(){
+            console.log(this.name); // name
+            var f = () =>{console.log(this.name);}
+            f(); // object
+        }
+    }
+
+    var obj3 = {
+        name:'object',
+        fn:() =>{
+            console.log(this.name); // window
+            var f = () =>{console.log(this.name);}
+            f(); // window
+        }
+    }
+
+    // 结论：对象方法中定义的箭头函数的this指向和该对象方法的this有关，此箭头函数是在指向对象方法时创建的，this指向
+    // 当前最高对象
+
+
+    for (var i in obj){
+        console.log(obj[i]);
+    }
+
+    Object.assign(obj, obj2);
+})()
+
+(function(){
+    function news(fn, ...arr){
+        var newObj = {};
+        newObj._proto_ = fn.prototype;
+        var ans = fn.apply(newObj, arr);
+        return ans instanceof Object ? ans : newObj;
+    }
+})()
