@@ -658,3 +658,33 @@ Infinity;
         return ans instanceof Object ? ans : newObj;
     }
 })()
+
+// 把对象array转为树型
+(function(){
+    var list = [
+        {id:1,name:'部门 A',parentId:0},
+        {id:2,name:'部门 B',parentId:0},
+        {id:3,name:'部门 C',parentId:1},
+        {id:4,name:'部门 D',parentId:1},
+        {id:5,name:'部门 E',parentId:2},
+        {id:6,name:'部门 F',parentId:3},
+        {id:7,name:'部门 G',parentId:2},
+        {id:8,name:'部门 H',parentId:4}
+    ];
+
+    function convert(list){
+        var res = [];
+        var map = list.reducer((ans, item) =>(ans[item.id] = item, ans), {});
+
+        for (var i in list){
+            if (i.parentId == 0){
+                res.push(i);
+                continue;
+            }
+
+            if (i.parentId in map){
+
+            }
+        }
+    }
+})()

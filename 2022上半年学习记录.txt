@@ -106,7 +106,7 @@
 71、iife（立即执行函数）中的作用域：1、没有var声明的变量也作为全局变量，2、块级作用域，3、闭包函数不可修改
 72、var obj = {}, obj = {num:1}，此时obj的指向改变，和obj = new Object()效果一样
 73、对象 . 运算符优先级大于赋值运算符
-74、es6 class使用typeof判断，返回结果是function，es6类的类型就是function，tostring结果是function
+74、es6 class使用typeof判断，返回结果是function(不是class关键字，是类)，es6类的类型就是function，tostring结果是function
 75、es6类也可以通过prototype设置原型对象
 76、浏览器默认行为指的是点击a标签跳转、表单回车提交等行为，react-route的link是封装了a标签，把to等参数合成href，
         link负责变更当前URL，route负责根据URL渲染对应组件
@@ -221,4 +221,14 @@
 153、JavaScript对象通过[]获取方法再通过（）调用方法
 154、手写JavaScript内置的一些函数，获取参数通过arguements对象获取，形式参数是规定的参数，arguements是实际的参数
 155、arguments不是数组不能用数组方法，有iterater接口，可以用展开运算符展开
+156、JavaScript对象：通过obj[name]获取元素值时，name首先会被当作变量解析，其次才会作为属性名获取其值
+157、Symbol(123)会生成一个独一无二的数值，作为属性名时不一样。（对象的键只能是字符类型和Symbol类型）
+158、对象的键如果不是字符类型会自动转为字符类型，键是对象默认使用toString方法，转为'[Object, Object]'。键是基本类型如
+          数字则转为对应字符串。如果是数组转为元素字符。
+159、String(123)和new String(123)类型不一样
+160、react、vue父子组件生命周期执行顺序是从外到内再从内到外，父组件挂载之前执行子组件生命周期
+161、JavaScript数组reducer方法，第二个参数是传递给函数的初始值，即累计值的初始值
+162、数组[1,2,30]的join方法、toString方法、String([1,2,3])结果都是'1,2,3'。只有使用Object.prototype.toString.call时才是
+          '[object,Array]'
+
                   
