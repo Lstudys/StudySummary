@@ -230,5 +230,10 @@
 161、JavaScript数组reducer方法，第二个参数是传递给函数的初始值，即累计值的初始值
 162、数组[1,2,30]的join方法、toString方法、String([1,2,3])结果都是'1,2,3'。只有使用Object.prototype.toString.call时才是
           '[object,Array]'
-
+163、JavaScript数组indexOf方法和find、findIndexOf方法搜索的是第一个符合的元素。indexOf参数是元素值，find参数是函数
+164、JavaScript字符串不是从Array的原型上创建的，但是有length属性、能通过[0]下标访问每个位置元素、能使用数组slice等方法
+165、字符串常用方法：substring、slice（作用同substring）、split（转换为一个数组）
+166、PureComponent封装了shouldComponentUpdate，进行浅比较（不是直接比较整个state，而是浅比较state对象的第一层），
+          如果有对象类型不适用。有对象类型改变时可以使用forceUpdate强制刷新
+167、实现shouldComponentUpdate时不要直接相比（nextState == this.state），而是进行深比较（递归）
                   
