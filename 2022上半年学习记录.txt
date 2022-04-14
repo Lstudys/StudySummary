@@ -236,4 +236,10 @@
 166、PureComponent封装了shouldComponentUpdate，进行浅比较（不是直接比较整个state，而是浅比较state对象的第一层），
           如果有对象类型不适用。有对象类型改变时可以使用forceUpdate强制刷新
 167、实现shouldComponentUpdate时不要直接相比（nextState == this.state），而是进行深比较（递归）
+168、react虚拟DOM缺点：第一次渲染时多了一层虚拟DOM的计算，所以比原生稍慢
+169、BOM history对象操作历史记录不会向服务端发送请求（刷新页面会），location对象的href赋值是刷新页面的过程，会
+           发送请求
+170、overfollow-Y和maxheight设置出现滚动条。overfollow auto和scroll区别：scroll不管超不超出高度都显示滚动条，auto
+           只在超出高度时出现
+171、构造函数返回对象时，new不起作用，实例是返回的对象，但是返回布尔值（true、false效果相同）和只有return时new有效
                   

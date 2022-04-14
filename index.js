@@ -429,6 +429,19 @@ Infinity;
     }
 })()
 
+(function(){
+    function fn(time){
+        var delayTime = time;
+        var timeout;
+        return function(){
+            clearTimeout(timeout);
+            setTimeout(() => {
+                console.log('防抖');
+            }, delayTime);
+        }
+    }
+})()
+
 // 节流
 (function(){
     function fn(time){
@@ -437,6 +450,19 @@ Infinity;
         return function(){
             if (Date.now() - nowTime > delayTime){
                 console,log('执行');
+                nowTime = Date.now();
+            }
+        }
+    }
+})()
+
+(function(){
+    function fn(time){
+        var nowTime = Date.now();
+        var times = time;
+        return function(){
+            if (Date.now() - nowTime > times){
+                console.log('节流');
                 nowTime = Date.now();
             }
         }
@@ -479,6 +505,16 @@ Infinity;
     }
 })()
 
+(function(){
+    function news(fn, ...arr){
+        var newObj = {};
+        newObj._proto_ = fn.prototype;
+
+        var o = fn.call(newObj, ...arr);
+        return o instanceof Object ? o : newObj;
+    }
+})()
+
 // 深拷贝
 (function(){
     function deepCopy(obj){
@@ -489,6 +525,21 @@ Infinity;
         for (var item in obj){
             newObj[item] = deepCopy(obj[item]);
         }
+        return newObj;
+    }
+})()
+
+(function(){
+    function deepCopy(obj){
+        if (! (obj instanceof Object)){
+            return obj;
+        }
+
+        var newObj = {};
+        for (var item in obj){
+            newObj[item] = deepCopy(obj[item]);
+        }
+
         return newObj;
     }
 })()
@@ -560,6 +611,15 @@ Infinity;
     }
 })()
 
+(function(){
+    function all(arr){
+        var ans = [];
+        arr.forEach(item =>{
+            item.then(data =>{ans.push(item)});
+        })
+    }
+})()
+
 // promise.race
 (function(){
     function promiseRace(arr){
@@ -578,6 +638,19 @@ Infinity;
     }
 })()
 
+(function(){
+    function race(arr){
+        return new Promise((resolve, reject) =>{
+            arr.forEach((item) =>{
+                item.then(data =>{
+                    resolve(data);
+                    return;
+                })
+            })
+        })
+    }
+})()
+
 // 实现bind
 (function(){
     Function.prototype.mybind = function(){
@@ -587,6 +660,17 @@ Infinity;
         var arr = Array.from(arguments).slice(1, - 1);
         return function(){
             selt.call(context, ...arr);
+        }
+    }
+})()
+
+(function(){
+    Function.prototype.mybind = function(){
+        var self = this;
+        var context = arguments[0];
+        var arr = Array.from(arguments).slice(1, - 1);
+        return function(){
+            self.call(context, ...arr);
         }
     }
 })()
