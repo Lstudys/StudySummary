@@ -250,5 +250,8 @@
 174、注意：try catch捕获异常不阻塞后面的代码是指不阻塞try语句块外面的代码，try语句块中throw错误后，throw后面的代码
           将不会执行，不使用throw手动抛出错误，有错误时错误后的代码也不会执行，try语句块后面的代码正常执行，所以使用try
            应时把依赖可能出错代码的代码放在try语句块中
+175、es6 Map、Set元素有顺序
+176、try catch的finally语句块不管有没有error都会执行，即使try或catch语句块中有return的值
+
 
                   
