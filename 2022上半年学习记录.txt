@@ -242,4 +242,13 @@
 170、overfollow-Y和maxheight设置出现滚动条。overfollow auto和scroll区别：scroll不管超不超出高度都显示滚动条，auto
            只在超出高度时出现
 171、构造函数返回对象时，new不起作用，实例是返回的对象，但是返回布尔值（true、false效果相同）和只有return时new有效
+172、JavaScript try catch捕获异常的目的是防止发生异常时阻塞报错位置后面的代码执行。JavaScript单线程，所以有报错时后面
+           的代码会被阻塞不能执行，try语句块中如果有错误则会被捕获到这个错误，并把错误对象传递给catch作为参数。（try catch
+           的catch参数是错误对象，promise的catch的参数是回调函数）
+173、forEach循环无法使用break、return跳出循环，可以通过把forEach执行部分使用try catch包裹起来，throw new Error跳出
+           循环。
+174、注意：try catch捕获异常不阻塞后面的代码是指不阻塞try语句块外面的代码，try语句块中throw错误后，throw后面的代码
+          将不会执行，不使用throw手动抛出错误，有错误时错误后的代码也不会执行，try语句块后面的代码正常执行，所以使用try
+           应时把依赖可能出错代码的代码放在try语句块中
+
                   
