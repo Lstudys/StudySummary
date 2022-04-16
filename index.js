@@ -772,3 +772,47 @@ Infinity;
         }
     }
 })()
+
+// 对Map对象排序
+(function(){
+    var map = new Map([['a',1],['b', 3],['c', 2], ['d', 5]]);
+    function sort(map){
+        var arr = Array.from(map);
+        arr.sort((a, b) =>{b[1] - a[1]});
+        map = new Map(arr);
+        return map;
+    }
+})()
+
+// 手写reduce方法
+(function(){
+    Array.prototype.newReduce = function(fn, initData){
+        if (this.length == 0 || !(fn instanceof Function) || !Array.isArray(this)){
+            return;
+        }
+        let sum = initData ? initData : this[0];
+
+        for (var index = initData ? 0 : 1; index < this.length; index ++){
+            sum = fn(sum, this[index], index, this);
+        }
+
+        return sum;
+    }
+})()
+
+// 回顾手写reduce
+(function(){
+    Array.prototype.newReduce = function(fn, initData){
+        if (this.length == 0 || !(fn instanceof Function) || ! Array.isArray(this)){
+            return 0;
+        }
+
+        let sum = initData ? initData : this[0];
+
+        for (var index = initData ? 0 : 1; index < this.length; index ++){
+            sum = fn(sum, this[index], index, this);
+        }
+
+        return sum;
+    }
+})()
