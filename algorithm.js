@@ -332,3 +332,21 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return newArr;
     }
 })()
+
+// 快排
+(function(){
+    while (left < right){
+        while (left < right && arr[right] >= flag){
+            right --;
+        }
+        while (left < right && arr[left] <- flag){
+            left ++;
+        }
+
+        if (left < right){
+            var num = arr[right];
+            arr[right] = arr[left];
+            arr[left] = num;
+        }
+    }
+})()
