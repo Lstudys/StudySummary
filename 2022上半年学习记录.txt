@@ -265,6 +265,11 @@
 183、构造函数原型对象的方法中的this指向实例对象，即：Array原型方法this指向数组实例，Function原型方法this指向方法实例
 184、HTTP缓存优先级：强缓存>协商缓存，强缓存：cache-control>expires，（cache-control是时间）
 185、函数返回Promise对象时使用await，返回的是resolve的值
+186、v-show会先渲染，然后根据display属性判断是否显示，所以会导致回流
+	v-if和v-for出现在同一元素中时，v-for的优先级高
+	v-for循环顺序是根据是否有iterator接口，有则使用next方法。没有则使用Object.keys方法
+
+
 
 
                   
