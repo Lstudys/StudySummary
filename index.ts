@@ -25,6 +25,20 @@
         sex: string;
     }
 
+
+
+    class father2{
+        constructor(name: string, age: number){
+            this.name = name;
+        }
+        name: string;
+
+        fn(num: number): void{
+            console.log(num);
+        }
+    }
+
+
 })();
 
 // 抽象类
@@ -39,6 +53,22 @@
 
         abstract fn(name:string, num: number): number;
     }
+
+    abstract class c1{
+        name: string;
+        fn(){
+            console.log(1);
+        }
+        abstract fun(num1: number, num2: number): number{
+            return num1 + num2;
+        }
+    }
+
+    class c2 extends c1{
+        fun(num1: number, num2: number): number{
+            return num1 + num2;
+        }
+    }
 })();
 
 // 接口
@@ -48,6 +78,26 @@
         age: number;
         num: number;
         fn(num: number): number;
+    }
+
+    interface inter2{
+        num: number;
+        fn(num: number): void;
+    }
+
+    var o1: inter2;
+    class c1 implements inter2{
+        num: number;
+        fn(num: number): void{
+            console.log(1);
+        }
+    }
+
+    o1 = {
+        num: 2,
+        fn(num: number){
+            console.log(1);
+        }
     }
 })();
 
@@ -74,6 +124,30 @@
             this.age = value;
         }
     }
+
+
+    class c1{
+        num: number;
+        public str: string;
+        protected sex: string;
+        private name: string;
+
+        get name(): string{
+            return this.name;
+        }
+
+        set name(value: string): void{
+            this.name = value;
+        }
+
+        get sex(): string{
+            return this.sex;
+        }
+
+        set sex(value: string): void{
+            this.sex = value;
+        }
+    }
 })();
 
 // 泛型
@@ -89,4 +163,12 @@
     }
 
     fun(2, 'ts');
+
+
+    function f<T, K>(num1: T, num2: K): T | K{
+        return num1 ? num1 : num2;
+    }
+
+    f(2,'a'); // 不加<>标注类型也可以用，因为TypeScript会自动识别传入的参数类型确定T和K
+    f<number, string>(1, 'a');
 })();
