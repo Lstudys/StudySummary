@@ -39,6 +39,27 @@
     }
 
 
+    class f1{
+        constructor(props: Array<number>){
+            this.arr = props;
+        }
+
+        arr: Array<number>;
+    }
+
+    class c1 extends f1{
+        name: string;
+    }
+
+    class c2 extends f1{
+        constructor(props: Array<number>, name: string){
+            super(props);
+            this.name = name;
+        }
+
+        name: string;
+    }
+
 })();
 
 // 抽象类
@@ -69,6 +90,17 @@
             return num1 + num2;
         }
     }
+
+    abstract class c3{
+        constructor(name: string){
+            this.name = name;
+        }
+
+        name: string;
+
+        abstract fn(num: number): void;
+        abstract f(num: number);
+    }
 })();
 
 // 接口
@@ -98,6 +130,18 @@
         fn(num: number){
             console.log(1);
         }
+    }
+
+    interface inter3{
+        name: string;
+        num: number;
+        fn(num1: number, num2: number): number;
+    }
+
+    interface inter4{
+        name: string;
+        num: number;
+        fun(num1: number, num2: number): void;
     }
 })();
 
@@ -171,4 +215,9 @@
 
     f(2,'a'); // 不加<>标注类型也可以用，因为TypeScript会自动识别传入的参数类型确定T和K
     f<number, string>(1, 'a');
+
+
+    function fn2<T, K>(num1: T, num2: K): T | K{
+        return num1 ? num1 : num2;
+    }
 })();
