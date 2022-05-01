@@ -290,6 +290,10 @@
 199、useEffect返回一个函数时，返回的函数在下一次useEffect执行之前执行
 200、useEffect是在DOM挂载后执行，useEffect返回的函数也是在挂载后执行，只是在useEffect内容执行前执行
 201、JSX中，大括号{}可以用来注释，原理是大括号包裹的是一个JS语句，所以也可以在大括号里进行输出
+202、TypeScript泛型只用在函数中？
+203、TypeScript type作用和interface类似，都可以extends，仅用法有些不同
+204、TypeScript定义箭头函数时括号后面的：类型是返回值类型
+205、接口中的（）：类型，是函数声明
 
 
 
