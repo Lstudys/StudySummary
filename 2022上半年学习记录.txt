@@ -294,6 +294,9 @@
 203、TypeScript type作用和interface类似，都可以extends，仅用法有些不同
 204、TypeScript定义箭头函数时括号后面的：类型是返回值类型
 205、接口中的（）：类型，是函数声明
+206、TypeScript类型断言
+207、TypeScript交叉类型
+208、TypeScript的never是所有类型的子类型
 
 
 
