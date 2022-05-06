@@ -221,3 +221,34 @@
         return num1 ? num1 : num2;
     }
 })();
+
+// 装饰器
+(function(){
+    function addProp(constructor){
+        console.log(constructor);
+        this.num = 2;
+    }
+
+    function fnDecorator(constructor, name, proDescription){
+        console.log(constructor);
+        console.log(name);
+        proDescription.writable = true;
+    }
+
+    @addProp
+    class c1{
+        constructor(name: string, age: number){
+            this.name = name;
+            this.age = age;
+        }
+
+        name: string;
+        age: number;
+
+        @fnDecorator
+        fn(){
+            console.log('decorator');
+        }
+
+    }
+})();
