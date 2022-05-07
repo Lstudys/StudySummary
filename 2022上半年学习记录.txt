@@ -315,6 +315,9 @@
            全局对象global的属性），核心模块，path、fs等，自定义模块。node中的模块其实是JavaScript中的对象
 220、koa的next，不同的函数（中间件）不是同一个线程执行的
 221、TypeScript装饰器是在代码编译阶段执行的，即JS代码编译阶段，不是运行阶段
+222、TypeScript索引类型：就是定义一个类似可以索引的数组？待定
+223、TypeScript声明数组类型就是根据元素内容声明的，如：var arr: myNum[] = [...]，myNum是自定义类型。类型断言就
+           as myNum[]
 
 
 
