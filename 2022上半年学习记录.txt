@@ -290,7 +290,7 @@
 199、useEffect返回一个函数时，返回的函数在下一次useEffect执行之前执行
 200、useEffect是在DOM挂载后执行，useEffect返回的函数也是在挂载后执行，只是在useEffect内容执行前执行
 201、JSX中，大括号{}可以用来注释，原理是大括号包裹的是一个JS语句，所以也可以在大括号里进行输出
-202、TypeScript泛型只用在函数中？
+202、TypeScript泛型只用在函数中？也可用在type和接口中
 203、TypeScript type作用和interface类似，都可以extends，仅用法有些不同
 204、TypeScript定义箭头函数时括号后面的：类型是返回值类型
 205、接口中的（）：类型，是函数声明
@@ -318,6 +318,10 @@
 222、TypeScript索引类型：就是定义一个类似可以索引的数组？待定
 223、TypeScript声明数组类型就是根据元素内容声明的，如：var arr: myNum[] = [...]，myNum是自定义类型。类型断言就
            as myNum[]
+224、interface定义和类定义类似，type是定义一种类型，用法和interface类似但是定义时需要等号
+225、TypeScript keyof获取类型的索引，并返回一个类型索引组成的字面量
+226、泛型在type关键字和接口中的使用
+227、TypeScript infer关键字（思考infer的使用场景）
 
 
 

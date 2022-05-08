@@ -252,3 +252,82 @@
 
     }
 })();
+
+// 练习函数和数组
+(function(){
+    function fn(num1: number, num2: number): number{
+        return num1 + num2;
+    }
+
+    var fn2 = (num1: number, num2: number): number =>{
+        return num1 + num2;
+    }
+
+    function f(str1: string, str2: string): string{
+        return str1 + str2;
+    }
+
+    var f2 = (str1: string, str2: string): string =>{
+        return str1 + str2;
+    }
+
+    var fun: function(num: number, str: string): void;
+    var fun2: function(num: number, str: string): void;
+    var fun3: function<T, K>(num: T, str: K): T | K;
+
+    var func: (num: number, str: string) =>void;
+    var func2: <T, K>(num: T, str: k) => T | K;
+    var func3: (num: number, str: string) => number;
+
+    interface item{
+        name: string;
+        num: number;
+        URL: string;
+        set(value: string): void;
+    }
+
+    var arr: item[] = [];
+
+    type item2 = {
+        name: string;
+        num: number;
+        URL: string;
+        set(value: string): void;
+    }
+
+    var arr2: item2[] = [];
+    interface FuncWithAttachment {
+        (param: string): boolean;
+        someProperty: number;
+      }
+      
+      const testFunc: FuncWithAttachment = function(param: string) {
+        return param.indexOf("Neal") > -1;
+      };
+})();
+
+// keyof
+(function(){
+    interface inter{
+        name: string;
+        num: number;
+        age: number;
+    }
+
+    var a = keyof inter; // a = 'name' | 'num' | 'age'
+
+})();
+
+// 泛型和infer关键字
+(function(){
+    type func<T> = {
+        num: T
+    }
+
+    interface inter<T>{
+        name: T,
+        num: T[]
+    }
+
+    type numType<T> = T extends () => infer K ? K : T;
+})()
