@@ -323,6 +323,13 @@
 226、泛型在type关键字和接口中的使用
 227、TypeScript infer关键字（思考infer的使用场景）
 228、Jest单元测试
+229、react函数组件：父组件re-render，并且给子组件传递了值，子组件re-render的原因可能是：re-render时重新给子组件
+          传值调用，导致子组件re-render，使用useCallback的原理可能是缓存起来，父组件re-render时不重新调用子组件
+230、思考：react函数组件使用useEffect且回调中使用dispatch函数时，第二个参数为什么是dispatch？
+231、react函数组件useEffect不加第二个参数，回调和直接写函数中效果一样？是的
+232、react函数组件useEffect能记录第二个参数的状态？如果参数是state好说，如果是其他值也能记录状态？也就是说re-render
+           不会刷新状态？是的
+233、react函数组件useEffect第二个参数习惯上使用state，但是传其它的值也是可以保存状态的，不要犯经验主义的错误
 
 
 
