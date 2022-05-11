@@ -330,6 +330,10 @@
 232、react函数组件useEffect能记录第二个参数的状态？如果参数是state好说，如果是其他值也能记录状态？也就是说re-render
            不会刷新状态？是的
 233、react函数组件useEffect第二个参数习惯上使用state，但是传其它的值也是可以保存状态的，不要犯经验主义的错误
+234、CSS选择器：div.div1是类名为div1的div，div#div2是id为div2的div，#和 . 一样作用
+235、CSS：border-image/radius/shadow，scale、transform都是基于原大小/位置进行缩放/偏移，动画两个点：@keyframes
+           创建动画对象，后面是对象名，animation给元素设置动画对象，值是对象名
+236、CSS属性值可以用函数设置
 
 
 
