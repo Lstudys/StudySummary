@@ -334,6 +334,13 @@
 235、CSS：border-image/radius/shadow，scale、transform都是基于原大小/位置进行缩放/偏移，动画两个点：@keyframes
            创建动画对象，后面是对象名，animation给元素设置动画对象，值是对象名
 236、CSS属性值可以用函数设置
+237、TypeScript类型守卫可以理解为定义函数、通过in、typeof等判断关键字对传入的参数进行类型判断，确保参数属于某个
+            类型或进行类型细分
+238、in关键字用来判断属性名是否在对象中，如‘num’in obj，和for in循环不同，for in需要使用[]访问，因item是变量不是
+            属性名。即in前面要么是变量值要么是变量名，都会解析为属性名，对象的 . 运算符是按属性名访问
+239、JavaScript数组flatMap方法做映射后扁平化一层
+240、BigNumberjs库解决精度问题
+241、TypeScript是扩展语言，不能直接在react、node项目中运行，需要先用tsc编译为JS文件才能运行
 
 
 
