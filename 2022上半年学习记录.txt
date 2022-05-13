@@ -341,6 +341,7 @@
 239、JavaScript数组flatMap方法做映射后扁平化一层
 240、BigNumberjs库解决精度问题
 241、TypeScript是扩展语言，不能直接在react、node项目中运行，需要先用tsc编译为JS文件才能运行
+241、webPack和编译react或一些库没有关系，只是用到webPack编译less、sass等
 
 
 
