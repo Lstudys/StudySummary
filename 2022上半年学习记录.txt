@@ -361,6 +361,10 @@
           样式的组件也是组件，可以定义它的defaultProps属性设置默认属性。3、ThemeProvider类似redux的provider组件，通过
           theme属性传递一些参数给所有子组件，用来定义主题样式。4、react通过ref访问的是组件的实例，并不是DOM，通过
            innerref可以访问DOM
+256、webPack bundle就是打包后的文件，webPack解决的主要问题就是打包后按需加载，以达到提升应用性能等目的  
+257、webPack代码分离
+258、promise的then返回的也是一个promise，回调的参数就是上个回调的return值。类似返回自己类型的还有node的
+           createServer方法
 
 
 
