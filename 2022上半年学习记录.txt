@@ -357,7 +357,7 @@
 253、tsx中对类使用泛型和其它情况泛型不太一样，声明类是通过<>定义props和state的类型，第一个参数是props，第二个
             参数是state
 254、项目常用组件技巧：给组件添加一些样式或监听事件，形成一个作用类似div的组件
-255、style-component很常用，一些用法：1、定义标签的样式时，可用模板函数获取父组件给当前组件传递的props。2、定义
+255、style-component很常用，一些用法：1、定义标签的样式时，可用模板字符串获取父组件给当前组件传递的props。2、定义
           样式的组件也是组件，可以定义它的defaultProps属性设置默认属性。3、ThemeProvider类似redux的provider组件，通过
           theme属性传递一些参数给所有子组件，用来定义主题样式。4、react通过ref访问的是组件的实例，并不是DOM，通过
            innerref可以访问DOM
@@ -365,7 +365,9 @@
 257、webPack代码分离
 258、promise的then返回的也是一个promise，回调的参数就是上个回调的return值。类似返回自己类型的还有node的
            createServer方法
-
+259、JSX就是react.createElement方法的语法糖，用于创建一个虚拟DOM
+260、react的render函数并不是把组件挂载到DOM节点上，即并不是真实的渲染组件，而是生成虚拟DOM，渲染组件是react.
+           createElement完成的。componentDidMount是渲染后执行，即不是render后执行
 
 
 
