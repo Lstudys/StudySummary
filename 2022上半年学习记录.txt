@@ -365,9 +365,13 @@
 257、webPack代码分离
 258、promise的then返回的也是一个promise，回调的参数就是上个回调的return值。类似返回自己类型的还有node的
            createServer方法
-259、JSX就是react.createElement方法的语法糖，用于创建一个虚拟DOM
-260、react的render函数并不是把组件挂载到DOM节点上，即并不是真实的渲染组件，而是生成虚拟DOM，渲染组件是react.
-           createElement完成的。componentDidMount是渲染后执行，即不是render后执行
+259、JSX就是react.createElement方法的语法糖，用于创建一个虚拟DOM（这个说法不是很严谨）
+260、react的render函数并不是把组件挂载到DOM节点上，即并不是真实的渲染组件，而是生成虚拟DOM，渲染组件是reactDOM.
+           render完成的。componentDidMount是渲染后执行，即不是render后执行。操作DOM的代码需要放在componentDidMount
+           中执行而不是willMount
+261、react的getDerivedStateFromProps返回的是组件的新state，但并不是覆盖掉原有的，而是更新一部分
+262、react16使用filber，渲染任务分多份，每份执行完交出主线程，即任务可打断。任务分两种：render和commit，render
+           可打断，commit不可打断，render任务是创建虚拟DOM相关的，commit是操作真实DOM相关的
 
 
 
