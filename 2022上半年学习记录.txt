@@ -371,7 +371,7 @@
            中执行而不是willMount
 261、react的getDerivedStateFromProps返回的是组件的新state，但并不是覆盖掉原有的，而是更新一部分
 262、react16使用filber，渲染任务分多份，每份执行完交出主线程，即任务可打断。任务分两种：render和commit，render
-           可打断，commit不可打断，render任务是创建虚拟DOM相关的，commit是操作真实DOM相关的
+           可打断，commit不可打断，render任务是创建虚拟DOM相关的，commit是操作真实DOM相关的（思考和react18关系）
 
 
 
