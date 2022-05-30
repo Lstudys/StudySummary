@@ -376,4 +376,10 @@
         // age: number;
         num: number;
     }
+
+    var obj2 = {
+        name: '1',
+        age: 2,
+        num: 2
+    }
 })()
