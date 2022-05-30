@@ -330,4 +330,50 @@
     }
 
     type numType<T> = T extends () => infer K ? K : T;
+})();
+
+(function(){
+    interface inter<T, S>{
+        name: string,
+        num: number,
+        parm: T,
+        prop: S
+    }
+
+    type types<prop> = {
+        prop: prop
+    }
+
+    var obj = {
+        name: 1,
+        num: 2
+    }
+
+    var num = 1;
+    function fn(){
+        var num = 2;
+        console.log(num);
+    }
+
+    class c1{
+        constructor(name: string, age: number){
+            this.name = name;
+            this.age = age;
+        }
+
+        name: string;
+        age: number;
+    }
+
+    class c2 extends c1{
+        constructor(name: string, age: number, num: number){
+            super(name, age);
+            this.name = name;
+            this.age = age;
+            this.num = num;
+        }
+        // name: string;
+        // age: number;
+        num: number;
+    }
 })()
