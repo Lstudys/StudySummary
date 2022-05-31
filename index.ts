@@ -382,4 +382,115 @@
         age: 2,
         num: 2
     }
+})();
+
+(function(){
+    var obj = {
+        name: 'Lstudys',
+        age: 21,
+        sex: 'man'
+    }
+
+    interface person{
+        name: string;
+        age: number;
+        sex: string;
+    }
+
+    type person2 = {
+        name: string;
+        age: number;
+        sex: string;
+    }
+
+    var l: person = {
+        name: 'Lstudys',
+        age: 21,
+        sex: 'man'
+    }
+
+    var l2: person2 = {
+        name: 'Lstudys',
+        age: 21,
+        sex: 'man'
+    }
+
+    function fn(person: person): void{
+        console.log(person.name);
+    }
+
+    function fn2({name, age, sex}: person): void{
+        const p = arguments[0];
+        console.log(p.name);
+    }
+
+    var f = (person: person):void =>{
+        console.log(person.name);
+    }
+
+    var f2 = ({name, age, sex}: person): void =>{
+        var p = arguments[0];
+        console.log(p.name)
+    }
+})();
+
+(function(){
+    var num: unknown;
+    num = 2;
+    num = 'a';
+    console.log(num);
+
+    var str: string;
+    str = 'a';
+
+    var nums: any;
+    nums = 2;
+    nums = 'a';
+
+    // str = num;
+    str = nums;
+})();
+
+(function(){
+    interface inter{
+        name: string;
+        age: number;
+        num: number;
+    }
+    abstract class c1{
+        constructor(name: string, age: number){
+            this.name = name;
+            this.age = age;
+        }
+
+        name: string;
+        age: number;
+
+        fn(parm: boolean): void{
+            if (parm){
+                console.log(this.name);
+            }
+        }
+
+        abstract fun(num: number): void;
+        abstract f<T>(num: number): T;
+        abstract fun2<T extends inter>(num: T): T;
+    }
+
+    class c2 extends c1{
+        constructor(num: number){
+            super('a', 1);
+            this.num = num;
+        }
+
+        num: number;
+        fun(num: number){
+            console.log(1);
+        }
+        f<number>(num: number){
+            return num;
+        }
+        fun2<>(){}
+
+    }
 })()
