@@ -493,4 +493,73 @@
         fun2<>(){}
 
     }
+})();
+
+(function(){
+    class c1{
+        constructor(name: string, age: number){
+            this.name = name;
+            this.age = age;
+        }
+
+        name: string;
+        age: number;
+
+        abstract fn(num: number): void;
+        abstract fun(num: number): void;
+        f = (num: number): void =>{
+            console.log(num, this.name);
+        }
+    }
+
+    class c2 extends c1{
+        constructor(name: string){
+            super(name, 21);
+            this.name = name;
+            this.num = 21;
+        }
+
+        num: number;
+        fn(num: number): void{
+            console.log(this.name;)
+        }
+
+        fun(num: number): void{
+            console.log(this.num);
+        }
+
+        getName = () =>{
+            console.log(this.name, this.num);
+        }
+    }
+
+    interface inter{
+        name: string;
+        age: number;
+        num: number;
+        ifMan: boolean;
+    }
+
+    type student = {
+        name: string;
+        id: number;
+        age: number;
+        college: string;
+    }
+
+    var strdent1 = new c1('l', 21);
+    var student2 = new c2('l');
+    var student3: inter = {
+        name: 'l',
+        age: 21,
+        num: 2,
+        ifMan: true
+    }
+
+    var student4: student = {
+        name: 'l',
+        age: 21,
+        id: 2,
+        college: 'rjxy'
+    }
 })()
