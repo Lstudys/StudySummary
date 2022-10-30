@@ -339,7 +339,7 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         while (left < right && arr[right] >= flag){
             right --;
         }
-        while (left < right && arr[left] <- flag){
+        while (left < right && arr[left] <= flag){
             left ++;
         }
 
@@ -350,3 +350,50 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         }
     }
 })()
+
+
+// 快排
+(function (){
+    function fastSort(arr){
+        if (arr.length == 1){
+            return;
+        }
+
+        let left = 1;
+        let right = arr.length - 1;
+        let num = arr[0];
+        while (left < right){
+            while (left < right && arr[right] >= num){
+                right --;
+            }
+            while (left < right && arr[left] <=num){
+                left ++;
+            }
+
+            if (left < right){
+                let n = arr[left];
+                arr[left] = arr[right];
+                arr[right] = n;
+            }
+        }
+        arr[0] = arr[left];
+        arr[left] = num;
+        fastSort()
+    }
+})();
+
+// 插入排序
+(function(){
+    function sort(arr){
+        for (let i = 1; i < arr.length; i ++){
+            let j = i - 1;
+            let num = arr[i];
+            while (arr[j] > arr[i]){
+                arr[j + 1] = arr[j];
+                j --;
+            }
+            arr[j + 1] = num;
+        }
+        return arr;
+    }
+})();
