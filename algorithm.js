@@ -388,7 +388,53 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         for (let i = 1; i < arr.length; i ++){
             let j = i - 1;
             let num = arr[i];
-            while (arr[j] > arr[i]){
+            while (arr[j] > arr[i] && j >= 0){
+                arr[j + 1] = arr[j];
+                j --;
+            }
+            arr[j + 1] = num;
+        }
+        return arr;
+    }
+})();
+
+// 快排
+(function(){
+    function fastSort(arr){
+        if (arr.length == 1){
+            return;
+        }
+        let num = arr[0];
+        let left = 1;
+        let right = arr.length - 1;
+        while (left < right){
+            while (left < right && arr[right] >= num){
+                right --;
+            }
+            while (left < right && arr[left] <= num){
+                left ++;
+            }
+
+            if (left < right){
+                let n = arr[left];
+                arr[left] = arr[right];
+                arr[right] = n;
+            }
+        }
+        arr[0] = arr[left];
+        arr[left] = num;
+
+        fastSort(); // 左右两边
+    }
+})();
+
+// 插入排序
+(function(){
+    function sort(arr){
+        for (var i = 1; i < arr.length; i ++){
+            let num = arr[i];
+            let j = i - 1;
+            while (arr[j] > num && j >= 0){
                 arr[j + 1] = arr[j];
                 j --;
             }
