@@ -1,0 +1,1502 @@
+迭代：下载多个文件卡死、黑屏、进度条异常、存进相册
+
+
+redux+react-redux架构，react-navigation集成redux
+
+清除缓存
+RN+报错
+
+虚拟机配置git，原理：clone项目，执行script
+
+升级：https://supercodepower.com/docs/react-native-upgrade/workflow
+调试工具：https://www.136.la/jingpin/show-68068.html
+
+
+["/storage/emulated/0"]
+
+现在默认下载路径是手机外部存储：storage/sdcard/Android/data/package/files/图片
+bug是没有读外部存储目录的权限  解决方案：https://blog.csdn.net/u011905115/article/details/88350634
+外部存储：
+路径一：storage/sdcard/Android/data/package/files/xxx  不适用
+路径二：storage/sdcard/xxx/xxx     需动态申请权限
+
+内部存储：data/data/应用包名/files/xxx.xx  不适用
+
+private void initData() {
+        if (Build.VERSION.SDK_INT >= 23) {//判断系统版本是否大于6.0
+           if (Environment.isExternalStorageManager()) {
+             loadDataFrompATH(mPath);
+          } else {
+              Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+              intent.setData(Uri.parse("package:" + mContext.getPackageName()));
+              startActivityForResult(intent, REQUEST_CODE);
+          }
+        }
+        loadDataFrompATH(mPath);//系统版本小于6.0直接加载数据
+    }
+
+
+下载队列：一个对象，键：字符数字，值：照片信息对象
+
+
+
+
+
+
+action添加uri后:ItemView组件加载错误，Invariant Violation: [100,"<<NaN>>",6258688] is not usable as a native method argument
+ 
+调试工具
+
+
+
+
+
+
+      
+ ERROR  TypeError: undefined is not an object (evaluating '_$$_REQUIRE(_dependencyMap[14], "react-native-cached-image").ImageCacheProvider')
+
+This error is located at:
+    in ItemView (created by Connect(ItemView))
+    in Connect(ItemView) (at DownloadPage.js:179)
+    in RCTView (at View.js:32)
+    in View (at DownloadPage.js:178)
+    in RCTView (at View.js:32)
+    in View (at VirtualizedList.js:2076)
+    in VirtualizedListCellContextProvider (at VirtualizedList.js:2091)
+    in CellRenderer (at VirtualizedList.js:815)
+    in RCTView (at View.js:32)
+    in View (at ScrollView.js:1666)
+    in RCTScrollView (at ScrollView.js:1784)
+    in ScrollView (at ScrollView.js:1810)
+    in ScrollView (at VirtualizedList.js:1269)
+    in VirtualizedListContextProvider (at VirtualizedList.js:1101)
+    in VirtualizedList (at FlatList.js:631)
+    in FlatList (at DownloadPage.js:219)
+    in RCTView (at View.js:32)
+    in View (at DownloadPage.js:215)
+    in RCTView (at View.js:32)
+    in View (at DownloadPage.js:54)
+    in DownloadPage (created by Connect(DownloadPage))
+    in Connect(DownloadPage) (at SceneView.tsx:126)
+    in StaticContainer
+    in EnsureSingleNavigator (at SceneView.tsx:118)
+    in SceneView (at useDescriptors.tsx:209)
+    in RCTView (at View.js:32)
+    in View (at Screen.tsx:63)
+    in RCTView (at View.js:32)
+    in View (at Background.tsx:13)
+    in Background (at Screen.tsx:58)
+    in Screen (at BottomTabView.tsx:129)
+    in RNSScreen (at createAnimatedComponent.js:243)
+    in AnimatedComponent (at createAnimatedComponent.js:296)
+    in AnimatedComponentWrapper (at src/index.native.tsx:150)
+    in Screen (at ScreenFallback.tsx:37)
+    in MaybeScreen (at BottomTabView.tsx:122)
+    in RNSScreenContainer (at src/index.native.tsx:189)
+    in ScreenContainer (at ScreenFallback.tsx:28)
+    in MaybeScreenContainer (at BottomTabView.tsx:93)
+    in RNCSafeAreaProvider (at SafeAreaContext.tsx:76)
+    in SafeAreaProvider (at SafeAreaProviderCompat.tsx:46)
+    in SafeAreaProviderCompat (at BottomTabView.tsx:92)
+    in BottomTabView (at createBottomTabNavigator.tsx:112)
+    in Unknown (at createBottomTabNavigator.tsx:111)
+    in BottomTabNavigator (at IndexTabNavigation.js:31)
+    in EnsureSingleNavigator (at BaseNavigationContainer.tsx:429)
+    in BaseNavigationContainer (at NavigationContainer.tsx:132)
+    in ThemeProvider (at NavigationContainer.tsx:131)
+    in NavigationContainerInner (at IndexTabNavigation.js:30)
+    in IndexTabNavigation (at PentaxPhotoSync.js:131)
+    in Provider (at PentaxPhotoSync.js:130)
+    in PentaxPhotoSync (at renderApplication.js:48)
+    in RCTView (at View.js:32)
+    in View (at AppContainer.js:106)
+    in RCTView (at View.js:32)
+    in View (at AppContainer.js:133)
+    in AppContainer (at renderApplication.js:41)
+    in pentax(RootComponent) (at renderApplication.js:57)
+
+
+
+
+使用fs提供接口下载，使用官方demo测试，了解RN执行流
+
+下载：progressInterval
+
+
+路径error：
+AppContainer@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.pentax&modulesOnly=false&runModule=true:74995:36
+pentax(RootComponent)@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.pentax&modulesOnly=false&runModule=true:81851:28
+ LOG  [TypeError: Network request failed]
+ LOG  [TypeError: Network request failed]
+ LOG  [TypeError: Network request failed]
+ ERROR  TypeError: undefined is not an object (evaluating 'nextProps.params.battery')
+
+
+
+
+
+
+
+
+
+
+Android文件：找调用
+umeng不需要
+back、备份文件
+MaterialProgressBar 进度条
+exif:经纬度
+
+
+
+
+看gitlab依赖文件的更改记录
+
+连相机：
+
+缩略图，原始，放大
+
+最新库修改
+
+
+npm WARN old lockfile
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile
+npm WARN deprecated fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+
+added 35 packages, and changed 1 package in 3m
+
+
+
+
+
+
+
+
+C:\Users\study\Desktop\PentaxPhotoSync>react-native run-android
+Scanning 661 folders for symlinks in C:\Users\study\Desktop\PentaxPhotoSync\node_modules (25ms)
+(node:19632) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Starting JS server...
+Building and installing the app on the device (cd android && gradlew.bat installDebug)...
+Starting a Gradle Daemon (subsequent builds will be faster)
+The JavaCompile.setDependencyCacheDir() method has been deprecated and is scheduled to be removed in Gradle 4.0.
+Incremental java compilation is an incubating feature.
+The TaskInputs.source(Object) method has been deprecated and is scheduled to be removed in Gradle 4.0. Please use TaskInputs.file(Object).skipWhenEmpty() instead.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+
+Could not dispatch a message to the daemon.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+> Configuring > 5/12 projects > Resolving dependencies ':app:_debugApk'
+
+Could not install the app on the device, read the error above for details.
+Make sure you have an Android emulator running or a device connected and have
+set up your Android development environment:
+https://facebook.github.io/react-native/docs/android-setup.html
+
+
+
+
+Download https://jcenter.bintray.com/com/facebook/fresco/animated-base/0.13.0/animated-base-0.13.0.aar
+
+
+第二次，连手机
+
+Microsoft Windows [版本 10.0.19042.1110]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\study>adb devices
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+STSDU19528050447        device
+
+
+C:\Users\study>cd pentaxphotosync
+
+C:\Users\study\PentaxPhotoSync>react-native run-android
+Scanning 661 folders for symlinks in C:\Users\study\PentaxPhotoSync\node_modules (154ms)
+(node:5200) Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Starting JS server...
+Building and installing the app on the device (cd android && gradlew.bat installDebug)...
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+The JavaCompile.setDependencyCacheDir() method has been deprecated and is scheduled to be removed in Gradle 4.0.
+Incremental java compilation is an incubating feature.
+The TaskInputs.source(Object) method has been deprecated and is scheduled to be removed in Gradle 4.0. Please use TaskInputs.file(Object).skipWhenEmpty() instead.
+> Configuring > 7/12 projects > Resolving dependencies ':app:_debugApk' > Resolving dependencies ':react-native-fetch-b
+
+> Configuring > 8/12 projects > Resolving dependencies ':app:_debugApk' > Resolving dependencies ':react-native-maps:_d
+
+
+
+
+> Configuring > 8/12 projects > Resolving dependencies ':app:_debugApk' > Resolving dependencies ':react-native-maps:_d
+
+
+> Configuring > 10/12 projects > Resolving dependencies ':app:_debugApk' > Resolving dependencies ':react-native-locali
+> Configuring > 12/12 projects > Resolving dependencies ':app:_debugApk' > Resolving dependencies ':react-native-networ
+
+
+
+
+
+> Configuring > 12/12 projects > Resolving dependencies ':app:_debugApk'
+
+
+
+
+
+
+
+
+Download https://jcenter.bintray.com/com/facebook/fresco/animated-base/0.13.0/animated-base-0.13.0.aar
+Download https://jcenter.bintray.com/com/facebook/fresco/animated-gif/0.13.0/animated-gif-0.13.0.aar
+Download https://jcenter.bintray.com/com/umeng/analytics/analytics/6.1.4/analytics-6.1.4.jar
+> Configuring > 12/12 projects > Resolving dependencies ':app:_releaseCompile'
+
+
+
+:app:preBuild UP-TO-DATE
+:app:preDebugBuild UP-TO-DATE
+:app:checkDebugManifest
+:app:preReleaseBuild UP-TO-DATE
+:react-native-background-job:preBuild UP-TO-DATE
+:react-native-background-job:preReleaseBuild UP-TO-DATE
+:react-native-background-job:checkReleaseManifest
+:react-native-background-job:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-background-job:preDebugBuild UP-TO-DATE
+:react-native-background-job:preDebugUnitTestBuild UP-TO-DATE
+:react-native-background-job:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportAppcompatV72301Library
+:react-native-background-job:prepareComAndroidSupportSupportCompat2500Library
+:react-native-background-job:prepareComAndroidSupportSupportCoreUi2500Library
+:react-native-background-job:prepareComAndroidSupportSupportCoreUtils2500Library
+:react-native-background-job:prepareComAndroidSupportSupportFragment2500Library
+:react-native-background-job:prepareComAndroidSupportSupportMediaCompat2500Library
+:react-native-background-job:prepareComAndroidSupportSupportV42500Library
+:react-native-background-job:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-background-job:prepareComFacebookFrescoDrawee101Library
+:react-native-background-job:prepareComFacebookFrescoFbcore101Library
+:react-native-background-job:prepareComFacebookFrescoFresco101Library
+:react-native-background-job:prepareComFacebookFrescoImagepipeline101Library
+:react-native-background-job:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-background-job:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-background-job:prepareComFacebookReactReactNative0460Library
+:react-native-background-job:prepareComFacebookSoloaderSoloader010Library
+:react-native-background-job:prepareComFirebaseFirebaseJobdispatcher070Library
+:react-native-background-job:prepareOrgWebkitAndroidJscR174650Library
+:react-native-background-job:prepareReleaseDependencies
+:react-native-background-job:compileReleaseAidl
+:react-native-background-job:compileReleaseNdk UP-TO-DATE
+:react-native-background-job:compileLint
+:react-native-background-job:copyReleaseLint UP-TO-DATE
+:react-native-background-job:compileReleaseRenderscript
+:react-native-background-job:generateReleaseBuildConfig
+:react-native-background-job:generateReleaseResValues
+:react-native-background-job:generateReleaseResources
+:react-native-background-job:mergeReleaseResources
+:react-native-background-job:processReleaseManifest
+:react-native-background-job:processReleaseResources
+:react-native-background-job:generateReleaseSources
+:react-native-background-job:incrementalReleaseJavaCompilationSafeguard
+:react-native-background-job:compileReleaseJavaWithJavac
+:react-native-background-job:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+> Building 7% > :react-native-background-job:compileReleaseJavaWithJavac
+:react-native-background-job:extractReleaseAnnotations
+:react-native-background-job:mergeReleaseShaders
+:react-native-background-job:compileReleaseShaders
+:react-native-background-job:generateReleaseAssets
+:react-native-background-job:mergeReleaseAssets
+:react-native-background-job:mergeReleaseProguardFiles
+:react-native-background-job:packageReleaseRenderscript UP-TO-DATE
+:react-native-background-job:packageReleaseResources
+:react-native-background-job:processReleaseJavaRes UP-TO-DATE
+:react-native-background-job:transformResourcesWithMergeJavaResForRelease
+:react-native-background-job:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-background-job:mergeReleaseJniLibFolders
+:react-native-background-job:transformNative_libsWithMergeJniLibsForRelease
+:react-native-background-job:transformNative_libsWithSyncJniLibsForRelease
+:react-native-background-job:bundleRelease
+:react-native-extra-dimensions-android:preBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preReleaseBuild UP-TO-DATE
+:react-native-extra-dimensions-android:checkReleaseManifest
+:react-native-extra-dimensions-android:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preDebugBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preDebugUnitTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComAndroidSupportAppcompatV72301Library
+:react-native-extra-dimensions-android:prepareComAndroidSupportSupportV42301Library
+:react-native-extra-dimensions-android:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoDrawee101Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoFbcore101Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoFresco101Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipeline101Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-extra-dimensions-android:prepareComFacebookReactReactNative0460Library
+:react-native-extra-dimensions-android:prepareComFacebookSoloaderSoloader010Library
+:react-native-extra-dimensions-android:prepareOrgWebkitAndroidJscR174650Library
+:react-native-extra-dimensions-android:prepareReleaseDependencies
+:react-native-extra-dimensions-android:compileReleaseAidl
+:react-native-extra-dimensions-android:compileReleaseNdk UP-TO-DATE
+:react-native-extra-dimensions-android:compileLint
+:react-native-extra-dimensions-android:copyReleaseLint UP-TO-DATE
+:react-native-extra-dimensions-android:compileReleaseRenderscript
+:react-native-extra-dimensions-android:generateReleaseBuildConfig
+:react-native-extra-dimensions-android:generateReleaseResValues
+:react-native-extra-dimensions-android:generateReleaseResources
+:react-native-extra-dimensions-android:mergeReleaseResources
+:react-native-extra-dimensions-android:processReleaseManifest
+:react-native-extra-dimensions-android:processReleaseResources
+:react-native-extra-dimensions-android:generateReleaseSources
+:react-native-extra-dimensions-android:incrementalReleaseJavaCompilationSafeguard
+:react-native-extra-dimensions-android:compileReleaseJavaWithJavac
+:react-native-extra-dimensions-android:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+:react-native-extra-dimensions-android:extractReleaseAnnotations
+:react-native-extra-dimensions-android:mergeReleaseShaders
+:react-native-extra-dimensions-android:compileReleaseShaders
+:react-native-extra-dimensions-android:generateReleaseAssets
+:react-native-extra-dimensions-android:mergeReleaseAssets
+:react-native-extra-dimensions-android:mergeReleaseProguardFiles
+:react-native-extra-dimensions-android:packageReleaseRenderscript UP-TO-DATE
+:react-native-extra-dimensions-android:packageReleaseResources
+:react-native-extra-dimensions-android:processReleaseJavaRes UP-TO-DATE
+:react-native-extra-dimensions-android:transformResourcesWithMergeJavaResForRelease
+:react-native-extra-dimensions-android:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-extra-dimensions-android:mergeReleaseJniLibFolders
+:react-native-extra-dimensions-android:transformNative_libsWithMergeJniLibsForRelease
+:react-native-extra-dimensions-android:transformNative_libsWithSyncJniLibsForRelease
+:react-native-extra-dimensions-android:bundleRelease
+:react-native-fetch-blob:preBuild UP-TO-DATE
+:react-native-fetch-blob:preReleaseBuild UP-TO-DATE
+:react-native-fetch-blob:checkReleaseManifest
+:react-native-fetch-blob:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-fetch-blob:preDebugBuild UP-TO-DATE
+:react-native-fetch-blob:preDebugUnitTestBuild UP-TO-DATE
+:react-native-fetch-blob:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-fetch-blob:prepareComAndroidSupportAppcompatV72301Library
+:react-native-fetch-blob:prepareComAndroidSupportSupportV42301Library
+:react-native-fetch-blob:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-fetch-blob:prepareComFacebookFrescoDrawee101Library
+:react-native-fetch-blob:prepareComFacebookFrescoFbcore101Library
+:react-native-fetch-blob:prepareComFacebookFrescoFresco101Library
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipeline101Library
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-fetch-blob:prepareComFacebookReactReactNative0460Library
+:react-native-fetch-blob:prepareComFacebookSoloaderSoloader010Library
+:react-native-fetch-blob:prepareOrgWebkitAndroidJscR174650Library
+:react-native-fetch-blob:prepareReleaseDependencies
+:react-native-fetch-blob:compileReleaseAidl
+:react-native-fetch-blob:compileReleaseNdk UP-TO-DATE
+:react-native-fetch-blob:compileLint
+:react-native-fetch-blob:copyReleaseLint UP-TO-DATE
+:react-native-fetch-blob:compileReleaseRenderscript
+:react-native-fetch-blob:generateReleaseBuildConfig
+:react-native-fetch-blob:generateReleaseResValues
+:react-native-fetch-blob:generateReleaseResources
+:react-native-fetch-blob:mergeReleaseResources
+:react-native-fetch-blob:processReleaseManifest
+:react-native-fetch-blob:processReleaseResources
+:react-native-fetch-blob:generateReleaseSources
+:react-native-fetch-blob:incrementalReleaseJavaCompilationSafeguard
+:react-native-fetch-blob:compileReleaseJavaWithJavac
+:react-native-fetch-blob:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+:react-native-fetch-blob:extractReleaseAnnotations
+:react-native-fetch-blob:mergeReleaseShaders
+:react-native-fetch-blob:compileReleaseShaders
+:react-native-fetch-blob:generateReleaseAssets
+:react-native-fetch-blob:mergeReleaseAssets
+:react-native-fetch-blob:mergeReleaseProguardFiles
+:react-native-fetch-blob:packageReleaseRenderscript UP-TO-DATE
+:react-native-fetch-blob:packageReleaseResources
+:react-native-fetch-blob:processReleaseJavaRes UP-TO-DATE
+:react-native-fetch-blob:transformResourcesWithMergeJavaResForRelease
+:react-native-fetch-blob:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-fetch-blob:mergeReleaseJniLibFolders
+:react-native-fetch-blob:transformNative_libsWithMergeJniLibsForRelease
+:react-native-fetch-blob:transformNative_libsWithSyncJniLibsForRelease
+:react-native-fetch-blob:bundleRelease
+:react-native-fs:preBuild UP-TO-DATE
+:react-native-fs:preReleaseBuild UP-TO-DATE
+:react-native-fs:checkReleaseManifest
+:react-native-fs:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-fs:preDebugBuild UP-TO-DATE
+:react-native-fs:preDebugUnitTestBuild UP-TO-DATE
+:react-native-fs:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-fs:prepareComAndroidSupportAppcompatV72301Library
+:react-native-fs:prepareComAndroidSupportSupportV42301Library
+:react-native-fs:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-fs:prepareComFacebookFrescoDrawee101Library
+:react-native-fs:prepareComFacebookFrescoFbcore101Library
+:react-native-fs:prepareComFacebookFrescoFresco101Library
+:react-native-fs:prepareComFacebookFrescoImagepipeline101Library
+:react-native-fs:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-fs:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-fs:prepareComFacebookReactReactNative0460Library
+:react-native-fs:prepareComFacebookSoloaderSoloader010Library
+:react-native-fs:prepareOrgWebkitAndroidJscR174650Library
+:react-native-fs:prepareReleaseDependencies
+:react-native-fs:compileReleaseAidl
+:react-native-fs:compileReleaseNdk UP-TO-DATE
+:react-native-fs:compileLint
+:react-native-fs:copyReleaseLint UP-TO-DATE
+:react-native-fs:compileReleaseRenderscript
+:react-native-fs:generateReleaseBuildConfig
+:react-native-fs:generateReleaseResValues
+:react-native-fs:generateReleaseResources
+:react-native-fs:mergeReleaseResources
+:react-native-fs:processReleaseManifest
+:react-native-fs:processReleaseResources
+:react-native-fs:generateReleaseSources
+:react-native-fs:incrementalReleaseJavaCompilationSafeguard
+:react-native-fs:compileReleaseJavaWithJavac
+:react-native-fs:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: C:\Users\study\PentaxPhotoSync\node_modules\react-native-fs\android\src\main\java\com\rnfs\RNFSManager.java使用或覆 盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+:react-native-fs:extractReleaseAnnotations
+:react-native-fs:mergeReleaseShaders
+:react-native-fs:compileReleaseShaders
+:react-native-fs:generateReleaseAssets
+:react-native-fs:mergeReleaseAssets
+:react-native-fs:mergeReleaseProguardFiles
+:react-native-fs:packageReleaseRenderscript UP-TO-DATE
+:react-native-fs:packageReleaseResources
+:react-native-fs:processReleaseJavaRes UP-TO-DATE
+:react-native-fs:transformResourcesWithMergeJavaResForRelease
+:react-native-fs:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-fs:mergeReleaseJniLibFolders
+:react-native-fs:transformNative_libsWithMergeJniLibsForRelease
+:react-native-fs:transformNative_libsWithSyncJniLibsForRelease
+:react-native-fs:bundleRelease
+:react-native-idle:preBuild UP-TO-DATE
+:react-native-idle:preReleaseBuild UP-TO-DATE
+:react-native-idle:checkReleaseManifest
+:react-native-idle:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-idle:preDebugBuild UP-TO-DATE
+:react-native-idle:preDebugUnitTestBuild UP-TO-DATE
+:react-native-idle:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-idle:prepareComAndroidSupportAppcompatV72301Library
+:react-native-idle:prepareComAndroidSupportSupportV42301Library
+:react-native-idle:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-idle:prepareComFacebookFrescoDrawee101Library
+:react-native-idle:prepareComFacebookFrescoFbcore101Library
+:react-native-idle:prepareComFacebookFrescoFresco101Library
+:react-native-idle:prepareComFacebookFrescoImagepipeline101Library
+:react-native-idle:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-idle:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-idle:prepareComFacebookReactReactNative0460Library
+:react-native-idle:prepareComFacebookSoloaderSoloader010Library
+:react-native-idle:prepareOrgWebkitAndroidJscR174650Library
+:react-native-idle:prepareReleaseDependencies
+:react-native-idle:compileReleaseAidl
+:react-native-idle:compileReleaseNdk UP-TO-DATE
+:react-native-idle:compileLint
+:react-native-idle:copyReleaseLint UP-TO-DATE
+:react-native-idle:compileReleaseRenderscript
+:react-native-idle:generateReleaseBuildConfig
+:react-native-idle:generateReleaseResValues
+:react-native-idle:generateReleaseResources
+:react-native-idle:mergeReleaseResources
+:react-native-idle:processReleaseManifest
+:react-native-idle:processReleaseResources
+:react-native-idle:generateReleaseSources
+:react-native-idle:incrementalReleaseJavaCompilationSafeguard
+:react-native-idle:compileReleaseJavaWithJavac
+:react-native-idle:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+:react-native-idle:extractReleaseAnnotations
+:react-native-idle:mergeReleaseShaders
+:react-native-idle:compileReleaseShaders
+:react-native-idle:generateReleaseAssets
+:react-native-idle:mergeReleaseAssets
+:react-native-idle:mergeReleaseProguardFiles
+:react-native-idle:packageReleaseRenderscript UP-TO-DATE
+:react-native-idle:packageReleaseResources
+:react-native-idle:processReleaseJavaRes UP-TO-DATE
+:react-native-idle:transformResourcesWithMergeJavaResForRelease
+:react-native-idle:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-idle:mergeReleaseJniLibFolders
+:react-native-idle:transformNative_libsWithMergeJniLibsForRelease
+:react-native-idle:transformNative_libsWithSyncJniLibsForRelease
+:react-native-idle:bundleRelease
+:react-native-image-metedata:preBuild UP-TO-DATE
+:react-native-image-metedata:preReleaseBuild UP-TO-DATE
+:react-native-image-metedata:checkReleaseManifest
+:react-native-image-metedata:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-image-metedata:preDebugBuild UP-TO-DATE
+:react-native-image-metedata:preDebugUnitTestBuild UP-TO-DATE
+:react-native-image-metedata:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-image-metedata:prepareComAndroidSupportAppcompatV72301Library
+:react-native-image-metedata:prepareComAndroidSupportSupportV42301Library
+:react-native-image-metedata:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-image-metedata:prepareComFacebookFrescoDrawee101Library
+:react-native-image-metedata:prepareComFacebookFrescoFbcore101Library
+:react-native-image-metedata:prepareComFacebookFrescoFresco101Library
+:react-native-image-metedata:prepareComFacebookFrescoImagepipeline101Library
+:react-native-image-metedata:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-image-metedata:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-image-metedata:prepareComFacebookReactReactNative0460Library
+:react-native-image-metedata:prepareComFacebookSoloaderSoloader010Library
+:react-native-image-metedata:prepareOrgWebkitAndroidJscR174650Library
+:react-native-image-metedata:prepareReleaseDependencies
+:react-native-image-metedata:compileReleaseAidl
+:react-native-image-metedata:compileReleaseNdk UP-TO-DATE
+:react-native-image-metedata:compileLint
+:react-native-image-metedata:copyReleaseLint UP-TO-DATE
+:react-native-image-metedata:compileReleaseRenderscript
+:react-native-image-metedata:generateReleaseBuildConfig
+:react-native-image-metedata:generateReleaseResValues
+:react-native-image-metedata:generateReleaseResources
+:react-native-image-metedata:mergeReleaseResources
+:react-native-image-metedata:processReleaseManifest
+:react-native-image-metedata:processReleaseResources
+:react-native-image-metedata:generateReleaseSources
+:react-native-image-metedata:incrementalReleaseJavaCompilationSafeguard
+:react-native-image-metedata:compileReleaseJavaWithJavac
+:react-native-image-metedata:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: C:\Users\study\PentaxPhotoSync\node_modules\react-native-image-metedata\android\src\main\java\com\example\react_native_image_metedata\RNIMManager.java使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+:react-native-image-metedata:extractReleaseAnnotations
+:react-native-image-metedata:mergeReleaseShaders
+:react-native-image-metedata:compileReleaseShaders
+:react-native-image-metedata:generateReleaseAssets
+:react-native-image-metedata:mergeReleaseAssets
+:react-native-image-metedata:mergeReleaseProguardFiles
+:react-native-image-metedata:packageReleaseRenderscript UP-TO-DATE
+:react-native-image-metedata:packageReleaseResources
+:react-native-image-metedata:processReleaseJavaRes UP-TO-DATE
+:react-native-image-metedata:transformResourcesWithMergeJavaResForRelease
+:react-native-image-metedata:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-image-metedata:mergeReleaseJniLibFolders
+:react-native-image-metedata:transformNative_libsWithMergeJniLibsForRelease
+:react-native-image-metedata:transformNative_libsWithSyncJniLibsForRelease
+:react-native-image-metedata:bundleRelease
+:react-native-localization:preBuild UP-TO-DATE
+:react-native-localization:preReleaseBuild UP-TO-DATE
+:react-native-localization:checkReleaseManifest
+:react-native-localization:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-localization:preDebugBuild UP-TO-DATE
+:react-native-localization:preDebugUnitTestBuild UP-TO-DATE
+:react-native-localization:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-localization:prepareComAndroidSupportAppcompatV72220Library
+:react-native-localization:prepareComAndroidSupportSupportV42220Library
+:react-native-localization:prepareComFacebookFrescoDrawee061Library
+:react-native-localization:prepareComFacebookFrescoFbcore061Library
+:react-native-localization:prepareComFacebookFrescoFresco061Library
+:react-native-localization:prepareComFacebookFrescoImagepipeline061Library
+:react-native-localization:prepareComFacebookFrescoImagepipelineOkhttp061Library
+:react-native-localization:prepareComFacebookReactReactNative0110Library
+:react-native-localization:prepareOrgWebkitAndroidJscR174650Library
+:react-native-localization:prepareReleaseDependencies
+:react-native-localization:compileReleaseAidl
+:react-native-localization:compileReleaseNdk UP-TO-DATE
+:react-native-localization:compileLint
+:react-native-localization:copyReleaseLint UP-TO-DATE
+:react-native-localization:compileReleaseRenderscript
+:react-native-localization:generateReleaseBuildConfig
+:react-native-localization:generateReleaseResValues
+:react-native-localization:generateReleaseResources
+:react-native-localization:mergeReleaseResources
+:react-native-localization:processReleaseManifest
+:react-native-localization:processReleaseResources
+:react-native-localization:generateReleaseSources
+:react-native-localization:incrementalReleaseJavaCompilationSafeguard
+:react-native-localization:compileReleaseJavaWithJavac
+:react-native-localization:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: C:\Users\study\PentaxPhotoSync\node_modules\react-native-localization\android\src\main\java\com\babisoft\ReactNativeLocalization\ReactNativeLocalization.java使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+:react-native-localization:extractReleaseAnnotations
+:react-native-localization:mergeReleaseShaders
+:react-native-localization:compileReleaseShaders
+:react-native-localization:generateReleaseAssets
+:react-native-localization:mergeReleaseAssets
+:react-native-localization:mergeReleaseProguardFiles
+:react-native-localization:packageReleaseRenderscript UP-TO-DATE
+:react-native-localization:packageReleaseResources
+:react-native-localization:processReleaseJavaRes UP-TO-DATE
+:react-native-localization:transformResourcesWithMergeJavaResForRelease
+:react-native-localization:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-localization:mergeReleaseJniLibFolders
+:react-native-localization:transformNative_libsWithMergeJniLibsForRelease
+:react-native-localization:transformNative_libsWithSyncJniLibsForRelease
+:react-native-localization:bundleRelease
+:react-native-maps:preBuild UP-TO-DATE
+:react-native-maps:preReleaseBuild UP-TO-DATE
+:react-native-maps:checkReleaseManifest
+:react-native-maps:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-maps:preDebugBuild UP-TO-DATE
+:react-native-maps:preDebugUnitTestBuild UP-TO-DATE
+:react-native-maps:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-maps:prepareComAndroidSupportAppcompatV72301Library
+:react-native-maps:prepareComAndroidSupportSupportV42400Library
+:react-native-maps:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-maps:prepareComFacebookFrescoDrawee101Library
+:react-native-maps:prepareComFacebookFrescoFbcore101Library
+:react-native-maps:prepareComFacebookFrescoFresco101Library
+:react-native-maps:prepareComFacebookFrescoImagepipeline101Library
+:react-native-maps:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-maps:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-maps:prepareComFacebookReactReactNative0460Library
+:react-native-maps:prepareComFacebookSoloaderSoloader010Library
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesBase1024Library
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesBasement1024Library
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesMaps1024Library
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesTasks1024Library
+:react-native-maps:prepareOrgWebkitAndroidJscR174650Library
+:react-native-maps:prepareReleaseDependencies
+:react-native-maps:compileReleaseAidl
+:react-native-maps:compileReleaseNdk UP-TO-DATE
+:react-native-maps:compileLint
+:react-native-maps:copyReleaseLint UP-TO-DATE
+:react-native-maps:compileReleaseRenderscript
+:react-native-maps:generateReleaseBuildConfig
+:react-native-maps:generateReleaseResValues
+:react-native-maps:generateReleaseResources
+:react-native-maps:mergeReleaseResources
+:react-native-maps:processReleaseManifest
+:react-native-maps:processReleaseResources
+:react-native-maps:generateReleaseSources
+:react-native-maps:incrementalReleaseJavaCompilationSafeguard
+:react-native-maps:compileReleaseJavaWithJavac
+:react-native-maps:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+:react-native-maps:extractReleaseAnnotations
+:react-native-maps:mergeReleaseShaders
+:react-native-maps:compileReleaseShaders
+:react-native-maps:generateReleaseAssets
+:react-native-maps:mergeReleaseAssets
+:react-native-maps:mergeReleaseProguardFiles
+:react-native-maps:packageReleaseRenderscript UP-TO-DATE
+:react-native-maps:packageReleaseResources
+:react-native-maps:processReleaseJavaRes UP-TO-DATE
+:react-native-maps:transformResourcesWithMergeJavaResForRelease
+:react-native-maps:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-maps:mergeReleaseJniLibFolders
+:react-native-maps:transformNative_libsWithMergeJniLibsForRelease
+:react-native-maps:transformNative_libsWithSyncJniLibsForRelease
+:react-native-maps:bundleRelease
+:react-native-network-info:preBuild UP-TO-DATE
+:react-native-network-info:preReleaseBuild UP-TO-DATE
+:react-native-network-info:checkReleaseManifest
+:react-native-network-info:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-network-info:preDebugBuild UP-TO-DATE
+:react-native-network-info:preDebugUnitTestBuild UP-TO-DATE
+:react-native-network-info:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-network-info:prepareComAndroidSupportAppcompatV72301Library
+:react-native-network-info:prepareComAndroidSupportSupportV42301Library
+:react-native-network-info:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-network-info:prepareComFacebookFrescoDrawee101Library
+:react-native-network-info:prepareComFacebookFrescoFbcore101Library
+:react-native-network-info:prepareComFacebookFrescoFresco101Library
+:react-native-network-info:prepareComFacebookFrescoImagepipeline101Library
+:react-native-network-info:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-network-info:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-network-info:prepareComFacebookReactReactNative0460Library
+:react-native-network-info:prepareComFacebookSoloaderSoloader010Library
+:react-native-network-info:prepareOrgWebkitAndroidJscR174650Library
+:react-native-network-info:prepareReleaseDependencies
+:react-native-network-info:compileReleaseAidl
+:react-native-network-info:compileReleaseNdk UP-TO-DATE
+:react-native-network-info:compileLint
+:react-native-network-info:copyReleaseLint UP-TO-DATE
+:react-native-network-info:compileReleaseRenderscript
+:react-native-network-info:generateReleaseBuildConfig
+:react-native-network-info:generateReleaseResValues
+:react-native-network-info:generateReleaseResources
+:react-native-network-info:mergeReleaseResources
+:react-native-network-info:processReleaseManifest
+:react-native-network-info:processReleaseResources
+:react-native-network-info:generateReleaseSources
+:react-native-network-info:incrementalReleaseJavaCompilationSafeguard
+:react-native-network-info:compileReleaseJavaWithJavac
+:react-native-network-info:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+:react-native-network-info:extractReleaseAnnotations
+:react-native-network-info:mergeReleaseShaders
+:react-native-network-info:compileReleaseShaders
+:react-native-network-info:generateReleaseAssets
+:react-native-network-info:mergeReleaseAssets
+:react-native-network-info:mergeReleaseProguardFiles
+:react-native-network-info:packageReleaseRenderscript UP-TO-DATE
+:react-native-network-info:packageReleaseResources
+:react-native-network-info:processReleaseJavaRes UP-TO-DATE
+:react-native-network-info:transformResourcesWithMergeJavaResForRelease
+:react-native-network-info:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-network-info:mergeReleaseJniLibFolders
+:react-native-network-info:transformNative_libsWithMergeJniLibsForRelease
+:react-native-network-info:transformNative_libsWithSyncJniLibsForRelease
+:react-native-network-info:bundleRelease
+:react-native-svg:preBuild UP-TO-DATE
+:react-native-svg:preReleaseBuild UP-TO-DATE
+:react-native-svg:checkReleaseManifest
+:react-native-svg:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-svg:preDebugBuild UP-TO-DATE
+:react-native-svg:preDebugUnitTestBuild UP-TO-DATE
+:react-native-svg:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-svg:prepareComAndroidSupportAppcompatV72301Library
+:react-native-svg:prepareComAndroidSupportSupportV42301Library
+:react-native-svg:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:react-native-svg:prepareComFacebookFrescoDrawee101Library
+:react-native-svg:prepareComFacebookFrescoFbcore101Library
+:react-native-svg:prepareComFacebookFrescoFresco101Library
+:react-native-svg:prepareComFacebookFrescoImagepipeline101Library
+:react-native-svg:prepareComFacebookFrescoImagepipelineBase101Library
+:react-native-svg:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:react-native-svg:prepareComFacebookReactReactNative0460Library
+:react-native-svg:prepareComFacebookSoloaderSoloader010Library
+:react-native-svg:prepareOrgWebkitAndroidJscR174650Library
+:react-native-svg:prepareReleaseDependencies
+:react-native-svg:compileReleaseAidl
+:react-native-svg:compileReleaseNdk UP-TO-DATE
+:react-native-svg:compileLint
+:react-native-svg:copyReleaseLint UP-TO-DATE
+:react-native-svg:compileReleaseRenderscript
+:react-native-svg:generateReleaseBuildConfig
+:react-native-svg:generateReleaseResValues
+:react-native-svg:generateReleaseResources
+:react-native-svg:mergeReleaseResources
+:react-native-svg:processReleaseManifest
+:react-native-svg:processReleaseResources
+:react-native-svg:generateReleaseSources
+:react-native-svg:incrementalReleaseJavaCompilationSafeguard
+:react-native-svg:compileReleaseJavaWithJavac
+:react-native-svg:compileReleaseJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+:react-native-svg:extractReleaseAnnotations
+:react-native-svg:mergeReleaseShaders
+:react-native-svg:compileReleaseShaders
+:react-native-svg:generateReleaseAssets
+:react-native-svg:mergeReleaseAssets
+:react-native-svg:mergeReleaseProguardFiles
+:react-native-svg:packageReleaseRenderscript UP-TO-DATE
+:react-native-svg:packageReleaseResources
+:react-native-svg:processReleaseJavaRes UP-TO-DATE
+:react-native-svg:transformResourcesWithMergeJavaResForRelease
+:react-native-svg:transformClassesAndResourcesWithSyncLibJarsForRelease
+:react-native-svg:mergeReleaseJniLibFolders
+:react-native-svg:transformNative_libsWithMergeJniLibsForRelease
+:react-native-svg:transformNative_libsWithSyncJniLibsForRelease
+:react-native-svg:bundleRelease
+:app:prepareComAndroidSupportAppcompatV72301Library
+:app:prepareComAndroidSupportConstraintConstraintLayout102Library
+:app:prepareComAndroidSupportRecyclerviewV72510Library
+:app:prepareComAndroidSupportSupportCompat2520Library
+:app:prepareComAndroidSupportSupportCoreUi2520Library
+:app:prepareComAndroidSupportSupportCoreUtils2520Library
+:app:prepareComAndroidSupportSupportFragment2520Library
+:app:prepareComAndroidSupportSupportMediaCompat2520Library
+:app:prepareComAndroidSupportSupportV42520Library
+:app:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library
+:app:prepareComFacebookFrescoAnimatedBase0130Library
+:app:prepareComFacebookFrescoAnimatedGif0130Library
+:app:prepareComFacebookFrescoDrawee101Library
+:app:prepareComFacebookFrescoFbcore101Library
+:app:prepareComFacebookFrescoFresco101Library
+:app:prepareComFacebookFrescoImagepipeline101Library
+:app:prepareComFacebookFrescoImagepipelineBase101Library
+:app:prepareComFacebookFrescoImagepipelineOkhttp3101Library
+:app:prepareComFacebookReactReactNative0460Library
+:app:prepareComFacebookSoloaderSoloader010Library
+:app:prepareComFirebaseFirebaseJobdispatcher070Library
+:app:prepareComGoogleAndroidGmsPlayServicesBase1104Library
+:app:prepareComGoogleAndroidGmsPlayServicesBasement1104Library
+:app:prepareComGoogleAndroidGmsPlayServicesMaps1104Library
+:app:prepareComGoogleAndroidGmsPlayServicesTasks1104Library
+:app:prepareOrgWebkitAndroidJscR174650Library
+:app:preparePentaxPhotoSyncReactNativeBackgroundJobUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeExtraDimensionsAndroidUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeFetchBlobUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeFsUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeIdleUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeImageMetedataUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeLocalizationUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeMapsUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeNetworkInfoUnspecifiedLibrary
+:app:preparePentaxPhotoSyncReactNativeSvgUnspecifiedLibrary
+:app:prepareDebugDependencies
+:app:compileDebugAidl
+:app:compileDebugRenderscript
+:app:generateDebugBuildConfig
+:app:mergeDebugShaders
+:app:compileDebugShaders
+:app:generateDebugAssets
+:app:mergeDebugAssets
+:app:generateDebugResValues
+:app:generateDebugResources
+:app:mergeDebugResources
+:app:bundleDebugJsAndAssets SKIPPED
+:app:processDebugManifest
+:app:processDebugResources
+:app:generateDebugSources
+:app:incrementalDebugJavaCompilationSafeguard
+:app:compileDebugJavaWithJavac
+:app:compileDebugJavaWithJavac - is not incremental (e.g. outputs have changed, no previous execution, etc.).
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: C:\Users\study\PentaxPhotoSync\android\app\src\main\java\com\luckyxmobile\pentaxphotosync\UmengNativeModule.java使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+:app:compileDebugNdk UP-TO-DATE
+:app:compileDebugSources
+:app:transformClassesWithDexForDebug
+
+Running dex as a separate process.
+
+To run dex in process, the Gradle daemon needs a larger heap.
+It currently has 1024 MB.
+For faster builds, increase the maximum heap size for the Gradle daemon to at least 1536 MB.
+To do this set org.gradle.jvmargs=-Xmx1536M in the project gradle.properties.
+For more information see https://docs.gradle.org/current/userguide/build_environment.html
+
+:app:mergeDebugJniLibFolders
+:app:transformNative_libsWithMergeJniLibsForDebug
+:app:processDebugJavaRes UP-TO-DATE
+:app:transformResourcesWithMergeJavaResForDebug
+:app:validateSigningDebug
+:app:packageDebug
+:app:assembleDebug
+:app:installDebug
+Skipping device 'STSDU19528050447' (STSDU19528050447): Device is OFFLINE.
+:app:installDebug FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:installDebug'.
+> com.android.builder.testing.api.DeviceException: No online devices found.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 57 mins 16.736 secs
+Could not install the app on the device, read the error above for details.
+Make sure you have an Android emulator running or a device connected and have
+set up your Android development environment:
+https://facebook.github.io/react-native/docs/android-setup.html
+
+C:\Users\study\PentaxPhotoSync>
+
+
+
+
+第三次，下载到手机上闪退：
+
+:app:preBuild UP-TO-DATE
+:app:preDebugBuild UP-TO-DATE
+:app:checkDebugManifest
+:app:preReleaseBuild UP-TO-DATE
+:react-native-background-job:preBuild UP-TO-DATE
+:react-native-background-job:preReleaseBuild UP-TO-DATE
+:react-native-background-job:checkReleaseManifest
+:react-native-background-job:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-background-job:preDebugBuild UP-TO-DATE
+:react-native-background-job:preDebugUnitTestBuild UP-TO-DATE
+:react-native-background-job:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportCompat2500Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportCoreUi2500Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportCoreUtils2500Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportFragment2500Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportMediaCompat2500Library UP-TO-DATE
+:react-native-background-job:prepareComAndroidSupportSupportV42500Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-background-job:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-background-job:prepareComFirebaseFirebaseJobdispatcher070Library UP-TO-DATE
+:react-native-background-job:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-background-job:prepareReleaseDependencies
+:react-native-background-job:compileReleaseAidl UP-TO-DATE
+:react-native-background-job:compileReleaseNdk UP-TO-DATE
+:react-native-background-job:compileLint UP-TO-DATE
+:react-native-background-job:copyReleaseLint UP-TO-DATE
+:react-native-background-job:compileReleaseRenderscript UP-TO-DATE
+:react-native-background-job:generateReleaseBuildConfig UP-TO-DATE
+:react-native-background-job:generateReleaseResValues UP-TO-DATE
+:react-native-background-job:generateReleaseResources UP-TO-DATE
+:react-native-background-job:mergeReleaseResources UP-TO-DATE
+:react-native-background-job:processReleaseManifest UP-TO-DATE
+:react-native-background-job:processReleaseResources UP-TO-DATE
+:react-native-background-job:generateReleaseSources UP-TO-DATE
+:react-native-background-job:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-background-job:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-background-job:extractReleaseAnnotations UP-TO-DATE
+:react-native-background-job:mergeReleaseShaders UP-TO-DATE
+:react-native-background-job:compileReleaseShaders UP-TO-DATE
+:react-native-background-job:generateReleaseAssets UP-TO-DATE
+:react-native-background-job:mergeReleaseAssets UP-TO-DATE
+:react-native-background-job:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-background-job:packageReleaseRenderscript UP-TO-DATE
+:react-native-background-job:packageReleaseResources UP-TO-DATE
+:react-native-background-job:processReleaseJavaRes UP-TO-DATE
+:react-native-background-job:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-background-job:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-background-job:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-background-job:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-background-job:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-background-job:bundleRelease UP-TO-DATE
+:react-native-extra-dimensions-android:preBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preReleaseBuild UP-TO-DATE
+:react-native-extra-dimensions-android:checkReleaseManifest
+:react-native-extra-dimensions-android:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preDebugBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preDebugUnitTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-extra-dimensions-android:prepareReleaseDependencies
+:react-native-extra-dimensions-android:compileReleaseAidl UP-TO-DATE
+:react-native-extra-dimensions-android:compileReleaseNdk UP-TO-DATE
+:react-native-extra-dimensions-android:compileLint UP-TO-DATE
+:react-native-extra-dimensions-android:copyReleaseLint UP-TO-DATE
+:react-native-extra-dimensions-android:compileReleaseRenderscript UP-TO-DATE
+:react-native-extra-dimensions-android:generateReleaseBuildConfig UP-TO-DATE
+:react-native-extra-dimensions-android:generateReleaseResValues UP-TO-DATE
+:react-native-extra-dimensions-android:generateReleaseResources UP-TO-DATE
+:react-native-extra-dimensions-android:mergeReleaseResources UP-TO-DATE
+:react-native-extra-dimensions-android:processReleaseManifest UP-TO-DATE
+:react-native-extra-dimensions-android:processReleaseResources UP-TO-DATE
+:react-native-extra-dimensions-android:generateReleaseSources UP-TO-DATE
+:react-native-extra-dimensions-android:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-extra-dimensions-android:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-extra-dimensions-android:extractReleaseAnnotations UP-TO-DATE
+:react-native-extra-dimensions-android:mergeReleaseShaders UP-TO-DATE
+:react-native-extra-dimensions-android:compileReleaseShaders UP-TO-DATE
+:react-native-extra-dimensions-android:generateReleaseAssets UP-TO-DATE
+:react-native-extra-dimensions-android:mergeReleaseAssets UP-TO-DATE
+:react-native-extra-dimensions-android:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-extra-dimensions-android:packageReleaseRenderscript UP-TO-DATE
+:react-native-extra-dimensions-android:packageReleaseResources UP-TO-DATE
+:react-native-extra-dimensions-android:processReleaseJavaRes UP-TO-DATE
+:react-native-extra-dimensions-android:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-extra-dimensions-android:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-extra-dimensions-android:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-extra-dimensions-android:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-extra-dimensions-android:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-extra-dimensions-android:bundleRelease UP-TO-DATE
+:react-native-fetch-blob:preBuild UP-TO-DATE
+:react-native-fetch-blob:preReleaseBuild UP-TO-DATE
+:react-native-fetch-blob:checkReleaseManifest
+:react-native-fetch-blob:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-fetch-blob:preDebugBuild UP-TO-DATE
+:react-native-fetch-blob:preDebugUnitTestBuild UP-TO-DATE
+:react-native-fetch-blob:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-fetch-blob:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-fetch-blob:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-fetch-blob:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-fetch-blob:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-fetch-blob:prepareReleaseDependencies
+:react-native-fetch-blob:compileReleaseAidl UP-TO-DATE
+:react-native-fetch-blob:compileReleaseNdk UP-TO-DATE
+:react-native-fetch-blob:compileLint UP-TO-DATE
+:react-native-fetch-blob:copyReleaseLint UP-TO-DATE
+:react-native-fetch-blob:compileReleaseRenderscript UP-TO-DATE
+:react-native-fetch-blob:generateReleaseBuildConfig UP-TO-DATE
+:react-native-fetch-blob:generateReleaseResValues UP-TO-DATE
+:react-native-fetch-blob:generateReleaseResources UP-TO-DATE
+:react-native-fetch-blob:mergeReleaseResources UP-TO-DATE
+:react-native-fetch-blob:processReleaseManifest UP-TO-DATE
+:react-native-fetch-blob:processReleaseResources UP-TO-DATE
+:react-native-fetch-blob:generateReleaseSources UP-TO-DATE
+:react-native-fetch-blob:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-fetch-blob:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-fetch-blob:extractReleaseAnnotations UP-TO-DATE
+:react-native-fetch-blob:mergeReleaseShaders UP-TO-DATE
+:react-native-fetch-blob:compileReleaseShaders UP-TO-DATE
+:react-native-fetch-blob:generateReleaseAssets UP-TO-DATE
+:react-native-fetch-blob:mergeReleaseAssets UP-TO-DATE
+:react-native-fetch-blob:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-fetch-blob:packageReleaseRenderscript UP-TO-DATE
+:react-native-fetch-blob:packageReleaseResources UP-TO-DATE
+:react-native-fetch-blob:processReleaseJavaRes UP-TO-DATE
+:react-native-fetch-blob:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-fetch-blob:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-fetch-blob:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-fetch-blob:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-fetch-blob:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-fetch-blob:bundleRelease UP-TO-DATE
+:react-native-fs:preBuild UP-TO-DATE
+:react-native-fs:preReleaseBuild UP-TO-DATE
+:react-native-fs:checkReleaseManifest
+:react-native-fs:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-fs:preDebugBuild UP-TO-DATE
+:react-native-fs:preDebugUnitTestBuild UP-TO-DATE
+:react-native-fs:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-fs:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-fs:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-fs:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-fs:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-fs:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-fs:prepareReleaseDependencies
+:react-native-fs:compileReleaseAidl UP-TO-DATE
+:react-native-fs:compileReleaseNdk UP-TO-DATE
+:react-native-fs:compileLint UP-TO-DATE
+:react-native-fs:copyReleaseLint UP-TO-DATE
+:react-native-fs:compileReleaseRenderscript UP-TO-DATE
+:react-native-fs:generateReleaseBuildConfig UP-TO-DATE
+:react-native-fs:generateReleaseResValues UP-TO-DATE
+:react-native-fs:generateReleaseResources UP-TO-DATE
+:react-native-fs:mergeReleaseResources UP-TO-DATE
+:react-native-fs:processReleaseManifest UP-TO-DATE
+:react-native-fs:processReleaseResources UP-TO-DATE
+:react-native-fs:generateReleaseSources UP-TO-DATE
+:react-native-fs:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-fs:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-fs:extractReleaseAnnotations UP-TO-DATE
+:react-native-fs:mergeReleaseShaders UP-TO-DATE
+:react-native-fs:compileReleaseShaders UP-TO-DATE
+:react-native-fs:generateReleaseAssets UP-TO-DATE
+:react-native-fs:mergeReleaseAssets UP-TO-DATE
+:react-native-fs:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-fs:packageReleaseRenderscript UP-TO-DATE
+:react-native-fs:packageReleaseResources UP-TO-DATE
+:react-native-fs:processReleaseJavaRes UP-TO-DATE
+:react-native-fs:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-fs:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-fs:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-fs:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-fs:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-fs:bundleRelease UP-TO-DATE
+:react-native-idle:preBuild UP-TO-DATE
+:react-native-idle:preReleaseBuild UP-TO-DATE
+:react-native-idle:checkReleaseManifest
+:react-native-idle:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-idle:preDebugBuild UP-TO-DATE
+:react-native-idle:preDebugUnitTestBuild UP-TO-DATE
+:react-native-idle:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-idle:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-idle:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-idle:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-idle:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-idle:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-idle:prepareReleaseDependencies
+:react-native-idle:compileReleaseAidl UP-TO-DATE
+:react-native-idle:compileReleaseNdk UP-TO-DATE
+:react-native-idle:compileLint UP-TO-DATE
+:react-native-idle:copyReleaseLint UP-TO-DATE
+:react-native-idle:compileReleaseRenderscript UP-TO-DATE
+:react-native-idle:generateReleaseBuildConfig UP-TO-DATE
+:react-native-idle:generateReleaseResValues UP-TO-DATE
+:react-native-idle:generateReleaseResources UP-TO-DATE
+:react-native-idle:mergeReleaseResources UP-TO-DATE
+:react-native-idle:processReleaseManifest UP-TO-DATE
+:react-native-idle:processReleaseResources UP-TO-DATE
+:react-native-idle:generateReleaseSources UP-TO-DATE
+:react-native-idle:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-idle:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-idle:extractReleaseAnnotations UP-TO-DATE
+:react-native-idle:mergeReleaseShaders UP-TO-DATE
+:react-native-idle:compileReleaseShaders UP-TO-DATE
+:react-native-idle:generateReleaseAssets UP-TO-DATE
+:react-native-idle:mergeReleaseAssets UP-TO-DATE
+:react-native-idle:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-idle:packageReleaseRenderscript UP-TO-DATE
+:react-native-idle:packageReleaseResources UP-TO-DATE
+:react-native-idle:processReleaseJavaRes UP-TO-DATE
+:react-native-idle:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-idle:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-idle:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-idle:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-idle:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-idle:bundleRelease UP-TO-DATE
+:react-native-image-metedata:preBuild UP-TO-DATE
+:react-native-image-metedata:preReleaseBuild UP-TO-DATE
+:react-native-image-metedata:checkReleaseManifest
+:react-native-image-metedata:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-image-metedata:preDebugBuild UP-TO-DATE
+:react-native-image-metedata:preDebugUnitTestBuild UP-TO-DATE
+:react-native-image-metedata:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-image-metedata:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-image-metedata:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-image-metedata:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-image-metedata:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-image-metedata:prepareReleaseDependencies
+:react-native-image-metedata:compileReleaseAidl UP-TO-DATE
+:react-native-image-metedata:compileReleaseNdk UP-TO-DATE
+:react-native-image-metedata:compileLint UP-TO-DATE
+:react-native-image-metedata:copyReleaseLint UP-TO-DATE
+:react-native-image-metedata:compileReleaseRenderscript UP-TO-DATE
+:react-native-image-metedata:generateReleaseBuildConfig UP-TO-DATE
+:react-native-image-metedata:generateReleaseResValues UP-TO-DATE
+:react-native-image-metedata:generateReleaseResources UP-TO-DATE
+:react-native-image-metedata:mergeReleaseResources UP-TO-DATE
+:react-native-image-metedata:processReleaseManifest UP-TO-DATE
+:react-native-image-metedata:processReleaseResources UP-TO-DATE
+:react-native-image-metedata:generateReleaseSources UP-TO-DATE
+:react-native-image-metedata:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-image-metedata:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-image-metedata:extractReleaseAnnotations UP-TO-DATE
+:react-native-image-metedata:mergeReleaseShaders UP-TO-DATE
+:react-native-image-metedata:compileReleaseShaders UP-TO-DATE
+:react-native-image-metedata:generateReleaseAssets UP-TO-DATE
+:react-native-image-metedata:mergeReleaseAssets UP-TO-DATE
+:react-native-image-metedata:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-image-metedata:packageReleaseRenderscript UP-TO-DATE
+:react-native-image-metedata:packageReleaseResources UP-TO-DATE
+:react-native-image-metedata:processReleaseJavaRes UP-TO-DATE
+:react-native-image-metedata:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-image-metedata:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-image-metedata:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-image-metedata:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-image-metedata:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-image-metedata:bundleRelease UP-TO-DATE
+:react-native-localization:preBuild UP-TO-DATE
+:react-native-localization:preReleaseBuild UP-TO-DATE
+:react-native-localization:checkReleaseManifest
+:react-native-localization:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-localization:preDebugBuild UP-TO-DATE
+:react-native-localization:preDebugUnitTestBuild UP-TO-DATE
+:react-native-localization:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-localization:prepareComAndroidSupportAppcompatV72220Library UP-TO-DATE
+:react-native-localization:prepareComAndroidSupportSupportV42220Library UP-TO-DATE
+:react-native-localization:prepareComFacebookFrescoDrawee061Library UP-TO-DATE
+:react-native-localization:prepareComFacebookFrescoFbcore061Library UP-TO-DATE
+:react-native-localization:prepareComFacebookFrescoFresco061Library UP-TO-DATE
+:react-native-localization:prepareComFacebookFrescoImagepipeline061Library UP-TO-DATE
+:react-native-localization:prepareComFacebookFrescoImagepipelineOkhttp061Library UP-TO-DATE
+:react-native-localization:prepareComFacebookReactReactNative0110Library UP-TO-DATE
+:react-native-localization:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-localization:prepareReleaseDependencies
+:react-native-localization:compileReleaseAidl UP-TO-DATE
+:react-native-localization:compileReleaseNdk UP-TO-DATE
+:react-native-localization:compileLint UP-TO-DATE
+:react-native-localization:copyReleaseLint UP-TO-DATE
+:react-native-localization:compileReleaseRenderscript UP-TO-DATE
+:react-native-localization:generateReleaseBuildConfig UP-TO-DATE
+:react-native-localization:generateReleaseResValues UP-TO-DATE
+:react-native-localization:generateReleaseResources UP-TO-DATE
+:react-native-localization:mergeReleaseResources UP-TO-DATE
+:react-native-localization:processReleaseManifest UP-TO-DATE
+:react-native-localization:processReleaseResources UP-TO-DATE
+:react-native-localization:generateReleaseSources UP-TO-DATE
+:react-native-localization:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-localization:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-localization:extractReleaseAnnotations UP-TO-DATE
+:react-native-localization:mergeReleaseShaders UP-TO-DATE
+:react-native-localization:compileReleaseShaders UP-TO-DATE
+:react-native-localization:generateReleaseAssets UP-TO-DATE
+:react-native-localization:mergeReleaseAssets UP-TO-DATE
+:react-native-localization:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-localization:packageReleaseRenderscript UP-TO-DATE
+:react-native-localization:packageReleaseResources UP-TO-DATE
+:react-native-localization:processReleaseJavaRes UP-TO-DATE
+:react-native-localization:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-localization:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-localization:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-localization:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-localization:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-localization:bundleRelease UP-TO-DATE
+:react-native-maps:preBuild UP-TO-DATE
+:react-native-maps:preReleaseBuild UP-TO-DATE
+:react-native-maps:checkReleaseManifest
+:react-native-maps:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-maps:preDebugBuild UP-TO-DATE
+:react-native-maps:preDebugUnitTestBuild UP-TO-DATE
+:react-native-maps:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-maps:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-maps:prepareComAndroidSupportSupportV42400Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-maps:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-maps:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesBase1024Library UP-TO-DATE
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesBasement1024Library UP-TO-DATE
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesMaps1024Library UP-TO-DATE
+:react-native-maps:prepareComGoogleAndroidGmsPlayServicesTasks1024Library UP-TO-DATE
+:react-native-maps:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-maps:prepareReleaseDependencies
+:react-native-maps:compileReleaseAidl UP-TO-DATE
+:react-native-maps:compileReleaseNdk UP-TO-DATE
+:react-native-maps:compileLint UP-TO-DATE
+:react-native-maps:copyReleaseLint UP-TO-DATE
+:react-native-maps:compileReleaseRenderscript UP-TO-DATE
+:react-native-maps:generateReleaseBuildConfig UP-TO-DATE
+:react-native-maps:generateReleaseResValues UP-TO-DATE
+:react-native-maps:generateReleaseResources UP-TO-DATE
+:react-native-maps:mergeReleaseResources UP-TO-DATE
+:react-native-maps:processReleaseManifest UP-TO-DATE
+:react-native-maps:processReleaseResources UP-TO-DATE
+:react-native-maps:generateReleaseSources UP-TO-DATE
+:react-native-maps:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-maps:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-maps:extractReleaseAnnotations UP-TO-DATE
+:react-native-maps:mergeReleaseShaders UP-TO-DATE
+:react-native-maps:compileReleaseShaders UP-TO-DATE
+:react-native-maps:generateReleaseAssets UP-TO-DATE
+:react-native-maps:mergeReleaseAssets UP-TO-DATE
+:react-native-maps:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-maps:packageReleaseRenderscript UP-TO-DATE
+:react-native-maps:packageReleaseResources UP-TO-DATE
+:react-native-maps:processReleaseJavaRes UP-TO-DATE
+:react-native-maps:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-maps:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-maps:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-maps:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-maps:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-maps:bundleRelease UP-TO-DATE
+:react-native-network-info:preBuild UP-TO-DATE
+:react-native-network-info:preReleaseBuild UP-TO-DATE
+:react-native-network-info:checkReleaseManifest
+:react-native-network-info:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-network-info:preDebugBuild UP-TO-DATE
+:react-native-network-info:preDebugUnitTestBuild UP-TO-DATE
+:react-native-network-info:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-network-info:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-network-info:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-network-info:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-network-info:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-network-info:prepareReleaseDependencies
+:react-native-network-info:compileReleaseAidl UP-TO-DATE
+:react-native-network-info:compileReleaseNdk UP-TO-DATE
+:react-native-network-info:compileLint UP-TO-DATE
+:react-native-network-info:copyReleaseLint UP-TO-DATE
+:react-native-network-info:compileReleaseRenderscript UP-TO-DATE
+:react-native-network-info:generateReleaseBuildConfig UP-TO-DATE
+:react-native-network-info:generateReleaseResValues UP-TO-DATE
+:react-native-network-info:generateReleaseResources UP-TO-DATE
+:react-native-network-info:mergeReleaseResources UP-TO-DATE
+:react-native-network-info:processReleaseManifest UP-TO-DATE
+:react-native-network-info:processReleaseResources UP-TO-DATE
+:react-native-network-info:generateReleaseSources UP-TO-DATE
+:react-native-network-info:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-network-info:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-network-info:extractReleaseAnnotations UP-TO-DATE
+:react-native-network-info:mergeReleaseShaders UP-TO-DATE
+:react-native-network-info:compileReleaseShaders UP-TO-DATE
+:react-native-network-info:generateReleaseAssets UP-TO-DATE
+:react-native-network-info:mergeReleaseAssets UP-TO-DATE
+:react-native-network-info:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-network-info:packageReleaseRenderscript UP-TO-DATE
+:react-native-network-info:packageReleaseResources UP-TO-DATE
+:react-native-network-info:processReleaseJavaRes UP-TO-DATE
+:react-native-network-info:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-network-info:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-network-info:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-network-info:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-network-info:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-network-info:bundleRelease UP-TO-DATE
+:react-native-svg:preBuild UP-TO-DATE
+:react-native-svg:preReleaseBuild UP-TO-DATE
+:react-native-svg:checkReleaseManifest
+:react-native-svg:preDebugAndroidTestBuild UP-TO-DATE
+:react-native-svg:preDebugBuild UP-TO-DATE
+:react-native-svg:preDebugUnitTestBuild UP-TO-DATE
+:react-native-svg:preReleaseUnitTestBuild UP-TO-DATE
+:react-native-svg:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:react-native-svg:prepareComAndroidSupportSupportV42301Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:react-native-svg:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:react-native-svg:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:react-native-svg:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:react-native-svg:prepareReleaseDependencies
+:react-native-svg:compileReleaseAidl UP-TO-DATE
+:react-native-svg:compileReleaseNdk UP-TO-DATE
+:react-native-svg:compileLint UP-TO-DATE
+:react-native-svg:copyReleaseLint UP-TO-DATE
+:react-native-svg:compileReleaseRenderscript UP-TO-DATE
+:react-native-svg:generateReleaseBuildConfig UP-TO-DATE
+:react-native-svg:generateReleaseResValues UP-TO-DATE
+:react-native-svg:generateReleaseResources UP-TO-DATE
+:react-native-svg:mergeReleaseResources UP-TO-DATE
+:react-native-svg:processReleaseManifest UP-TO-DATE
+:react-native-svg:processReleaseResources UP-TO-DATE
+:react-native-svg:generateReleaseSources UP-TO-DATE
+:react-native-svg:incrementalReleaseJavaCompilationSafeguard UP-TO-DATE
+:react-native-svg:compileReleaseJavaWithJavac UP-TO-DATE
+:react-native-svg:extractReleaseAnnotations UP-TO-DATE
+:react-native-svg:mergeReleaseShaders UP-TO-DATE
+:react-native-svg:compileReleaseShaders UP-TO-DATE
+:react-native-svg:generateReleaseAssets UP-TO-DATE
+:react-native-svg:mergeReleaseAssets UP-TO-DATE
+:react-native-svg:mergeReleaseProguardFiles UP-TO-DATE
+:react-native-svg:packageReleaseRenderscript UP-TO-DATE
+:react-native-svg:packageReleaseResources UP-TO-DATE
+:react-native-svg:processReleaseJavaRes UP-TO-DATE
+:react-native-svg:transformResourcesWithMergeJavaResForRelease UP-TO-DATE
+:react-native-svg:transformClassesAndResourcesWithSyncLibJarsForRelease UP-TO-DATE
+:react-native-svg:mergeReleaseJniLibFolders UP-TO-DATE
+:react-native-svg:transformNative_libsWithMergeJniLibsForRelease UP-TO-DATE
+:react-native-svg:transformNative_libsWithSyncJniLibsForRelease UP-TO-DATE
+:react-native-svg:bundleRelease UP-TO-DATE
+:app:prepareComAndroidSupportAppcompatV72301Library UP-TO-DATE
+:app:prepareComAndroidSupportConstraintConstraintLayout102Library UP-TO-DATE
+:app:prepareComAndroidSupportRecyclerviewV72510Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportCompat2520Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportCoreUi2520Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportCoreUtils2520Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportFragment2520Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportMediaCompat2520Library UP-TO-DATE
+:app:prepareComAndroidSupportSupportV42520Library UP-TO-DATE
+:app:prepareComFacebookFbuiTextlayoutbuilderTextlayoutbuilder100Library UP-TO-DATE
+:app:prepareComFacebookFrescoAnimatedBase0130Library UP-TO-DATE
+:app:prepareComFacebookFrescoAnimatedGif0130Library UP-TO-DATE
+:app:prepareComFacebookFrescoDrawee101Library UP-TO-DATE
+:app:prepareComFacebookFrescoFbcore101Library UP-TO-DATE
+:app:prepareComFacebookFrescoFresco101Library UP-TO-DATE
+:app:prepareComFacebookFrescoImagepipeline101Library UP-TO-DATE
+:app:prepareComFacebookFrescoImagepipelineBase101Library UP-TO-DATE
+:app:prepareComFacebookFrescoImagepipelineOkhttp3101Library UP-TO-DATE
+:app:prepareComFacebookReactReactNative0460Library UP-TO-DATE
+:app:prepareComFacebookSoloaderSoloader010Library UP-TO-DATE
+:app:prepareComFirebaseFirebaseJobdispatcher070Library UP-TO-DATE
+:app:prepareComGoogleAndroidGmsPlayServicesBase1104Library UP-TO-DATE
+:app:prepareComGoogleAndroidGmsPlayServicesBasement1104Library UP-TO-DATE
+:app:prepareComGoogleAndroidGmsPlayServicesMaps1104Library UP-TO-DATE
+:app:prepareComGoogleAndroidGmsPlayServicesTasks1104Library UP-TO-DATE
+:app:prepareOrgWebkitAndroidJscR174650Library UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeBackgroundJobUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeExtraDimensionsAndroidUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeFetchBlobUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeFsUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeIdleUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeImageMetedataUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeLocalizationUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeMapsUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeNetworkInfoUnspecifiedLibrary UP-TO-DATE
+:app:preparePentaxPhotoSyncReactNativeSvgUnspecifiedLibrary UP-TO-DATE
+:app:prepareDebugDependencies
+:app:compileDebugAidl UP-TO-DATE
+:app:compileDebugRenderscript UP-TO-DATE
+:app:generateDebugBuildConfig UP-TO-DATE
+:app:mergeDebugShaders UP-TO-DATE
+:app:compileDebugShaders UP-TO-DATE
+:app:generateDebugAssets UP-TO-DATE
+:app:mergeDebugAssets UP-TO-DATE
+:app:generateDebugResValues UP-TO-DATE
+:app:generateDebugResources UP-TO-DATE
+:app:mergeDebugResources UP-TO-DATE
+:app:bundleDebugJsAndAssets SKIPPED
+:app:processDebugManifest UP-TO-DATE
+:app:processDebugResources UP-TO-DATE
+:app:generateDebugSources UP-TO-DATE
+:app:incrementalDebugJavaCompilationSafeguard UP-TO-DATE
+:app:compileDebugJavaWithJavac UP-TO-DATE
+:app:compileDebugNdk UP-TO-DATE
+:app:compileDebugSources UP-TO-DATE
+:app:transformClassesWithDexForDebug UP-TO-DATE
+:app:mergeDebugJniLibFolders UP-TO-DATE
+:app:transformNative_libsWithMergeJniLibsForDebug UP-TO-DATE
+:app:processDebugJavaRes UP-TO-DATE
+:app:transformResourcesWithMergeJavaResForDebug UP-TO-DATE
+:app:validateSigningDebug
+:app:packageDebug UP-TO-DATE
+:app:assembleDebug UP-TO-DATE
+:app:installDebug
+Installing APK 'app-debug.apk' on 'YAL-AL00 - 10' for app:debug
+Installed on 1 device.
+
+BUILD SUCCESSFUL
+
+Total time: 54 mins 9.214 secs
+'adb'      ڲ    ⲿ   Ҳ   ǿ    еĳ   
+       ļ 
+Starting the app (E:\sdk/platform-tools/adb shell am start -n com.luckyxmobile.pentaxphotosync/com.luckyxmobile.pentaxphotosync.MainActivity...
+Starting: Intent { cmp=com.luckyxmobile.pentaxphotosync/.MainActivity }
+
+
+
+
+8.11
+app:mergeDebugResources
+:app:bundleDebugJsAndAssets SKIPPED
+:app:processDebugManifest
+:app:processDebugResources
+C:\Users\study\PentaxPhotoSync\android\app\src\main\res\drawable-mdpi\ios_assets_src_component_remotecontrol.xml:28: AAPT: Error parsing XML: mismatched tag
+
+C:\Users\study\PentaxPhotoSync\android\app\build\intermediates\res\merged\debug\drawable-mdpi-v4\ios_assets_src_component_remotecontrol.xml:28: error: Error parsing XML: mismatched tag
+
+
+:app:processDebugResources FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:processDebugResources'.
+> com.android.ide.common.process.ProcessException: Failed to execute aapt
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 54 mins 25.227 secs
+Could not install the app on the device, read the error above for details.
+Make sure you have an Android emulator running or a device connected and have
+

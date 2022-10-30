@@ -815,4 +815,14 @@ Infinity;
 
         return sum;
     }
+})();
+
+
+(function(){
+    function news(fun, ...arg){
+        var obj = {};
+        obj._proto_ = fun.prototype;
+        var newObj = fun.apply(obj, ...arg);
+        return newObj instanceof Object ? newObj : obj;
+    }
 })()

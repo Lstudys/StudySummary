@@ -1,0 +1,36 @@
+别把颓废当成感受人生，别把感受人生当成颓废
+
+上学期：react项目边做边学新内容，原生项目边做边学新内容，一些比较大的新内容可以做完项目后再学比如bootstrap，vue往后放，期间做Pentax
+             改变学习思维，不要感觉跟视频做不太熟练，先做好项目，再弄透知识点，再练习项目（像Col这种官方文档中没有的组件，就跟着视频学）
+搞完react项目搞bootstrap，less等css预编译语言
+其它知识：webpack，express，Ajax，react native学会编写Android模块内容，react底层原理
+
+理解点：前后端联合开发方式√，webpack使用，react、vue原理，bootstrap等UI框架怎么打包让服务端使用的，性能优化，
+动画，微前端，BOM(重点)√，DOM，浏览器缓存，数据本地存储，数据管理，传参，token，业务逻辑，nuxt原理，JWT，
+bearer认证，react/vue打包发布、babel使用，react native bridge
+
+HTML标签属性meta等等
+阅读文档的能力，阅读GitHub的能力，查看外语回答的能力
+
+react native调试异常：https://segmentfault.com/a/1190000023150130
+vue：https://ke.qq.com/course/3449904?taid=11215847535453232
+前端知识：https://github.com/qianguyihao/Web
+
+寒假之前：react项目，Pentax（Pentax先解决问题，等寒假或以后再系统看代码，学习它的架构和用到的知识），原生+bootstrap，webpack，react-dom使用
+寒假：算法，react原理，react native原理，vue原理，Nuxt原理，面经，简历
+
+reactpro：主要搞react和express、打包部署等工程化问题，mongo作为扩展
+
+
+下一步：原生搞完学bootstrap，用bootstrap做项目，继续react、Pentax （react视频做完后用react写timebank）
+第二天做：解决环境变量问题，解决数据库使用问题，学会数据库使用
+
+
+编码习惯：react组件相关资源文件放在一个文件夹下，jsx代码命名为index.jsx，导入时不用写index
+
+
+提升：阅读源码能力，修改源码（开源项目第三方库）能力，解决问题能力（查找资料，下载GitHub上的项目示例看代码，看文档）
+
+
+
+维护别人的项目主要解决问题，次要学习代码和知识点

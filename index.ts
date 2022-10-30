@@ -199,6 +199,13 @@
     function fn<T>(num: T): T{
         return num;
     }
+    function f1<T>(num: T): T{
+        return num;
+    }
+
+    function f2<K, T>(num1: T, num2: K): K | T{
+        return num1 ? num1 : num2;
+    }
 
     fn<number>(2);
 

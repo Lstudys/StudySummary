@@ -1,0 +1,34 @@
+下一步：算法，react项目迭代（项目先看react-pxq和vue2-elm，再看outline），项目梳理，面经（webSocket实际使用，webpack）
+短板：vue和计算机网络       提升：react事件机制源码    复习：算法和HTML、CSS
+项目：
+ckb：梳理项目结构、解决数据显示bug、搜索框无焦点、页面切换问题
+ghchat：先学webPack，解决登录到主页面问题（包括服务端验证问题），梳理项目结构，学习架构模式、迭代版本（找可优化点）
+Pentax（系统看代码）：设置下载完标签消失（系统1），点×退出图片放大（系统2），取消选择图片（退出uri队列），取消下载问题
+https://taufiq-ibrahim.medium.com/using-adb-logcat-for-react-native-debugging-38256bda007c 
+adb logcat *:S ReactNative:V ReactNativeJS:V
+
+next搭建博客
+
+框架：了解函数组件和类组件区别（性能上的区别）√，react原理√，测试函数组件刷新后变量是否重置，面经框架
+
+算法：排序√，查找
+
+计算机网络：了解http认证（什么是认证及如何认证）√，http请求头作用√，http相关内容√
+
+简历相关：了解cookie和localstorege的区别（浏览器存储的几种方式的区别），查看简历
+
+学过的内容:JavaScript，HTML+CSS，其它
+
+
+
+
+
+
+准备：源码，简历用到的网络原理
+
+
+重定向到博客页
+
+刷新令牌、退出登录
+
+解决鼠标悬浮样式问题（编写css解决悬浮样式，现需解决组件内部css问题）

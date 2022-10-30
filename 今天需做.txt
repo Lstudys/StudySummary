@@ -1,0 +1,134 @@
+虚拟机账户：Lstudy，Lyhwlzxsys0，RDP：3389
+理清楚什么是决定性的什么是扩展学习的，解决问题时理清思路不要钻进一条路，不要纠结学什么
+Linux虚拟机： ssh  CI10_17@52.231.68.212     密码：BoyFriend
+网络管理虚拟机：yh0
+GitHub token：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
+求知课程id：22942
+Pentax口令：mypentax
+MySQL：yonghui131
+
+
+node:C:\Program Files\nodejs 16          E:\nodejs 10
+
+Google yonghuiwlzxsysgg131
+
+断点调试：https://www.cnblogs.com/kdy11/p/8940831.html
+
+https://segmentfault.com/a/1190000023461296     每天都要看一看
+https://blog.csdn.net/weixin_42350212/article/details/118111210?utm_medium=distribute.pc_feed_404.none-task-blog-2~default~PERSONREC~default-2.nonecase&depth_1-utm_source=distribute.pc_feed_404.none-task-blog-2~default~PERSONREC~default-2.nonecas
+百度使用方法
+
+！！！
+接下来去做：react看完+做项目（穿插node）、vue看完+做项目，原生学习+做项目
+每天待完成：python作业，web作业
+Pentax接下来：权限方式更改，黑屏解决：查看log
+
+
+本学期：react+node（面经）
+
+JavaScript+其它内容
+
+原生web
+
+
+
+
+
+
+父组件和子组件props关系？
+解决state
+理解tab组件和方法
+this.props.dispatch/navgation.dispatch   
+理解dispatch和它的函数参数
+
+
+
+
+
+
+
+
+ui适配，比例字体   https://www.jb51.net/article/141826.htm   https://www.cnblogs.com/plBlog/p/12375833.html
+
+ToDo：{
+
+UI：{
+输入更方便（两个输入框放一块），
+图标修改（写一个设置页面，方便后面添加设置），
+侧边栏，
+”请求时长“四个字改一下，
+}
+，
+chart：{
+图表横坐标移动：隐藏前面的数据
+}
+，
+搭建CI
+，
+Pentax
+
+}
+
+
+
+进程间通信：https://www.cnblogs.com/xuanyuan/p/15078280.html
+
+
+其他内容补充
+
+状态管理√
+props state等使用√
+通信 PubSub √
+
+
+适配方案  https://developer.aliyun.com/article/576490
+整体使用flex布局，宽高字体大小使用适配方案
+
+布局适配不是固定某一格式的，不是思考就能解决的需要实践
+
+
+
+react native：UI，模式，高级用法，业务逻辑
+react native原理
+
+代码写规范
+组件化开发规范
+样式写好    https://www.cnblogs.com/xiaobaiv/p/9020335.html
+使用设计模式 
+
+原理
+优化
+
+
+
+
+
+
+
+
+
+
+数据显示位置换了
+页面跳转函数设置
+页面跳转后每次输入后刷新记录，不是启动页面时获取记录
+页面ui适配
+重构代码：{1、并不是把文件的代码分成专门存放页面和专门存放函数的，ui和函数可同时存在    2、}
+
+
+
+输入框获取焦点后跳转页面->新页面设置几个变量，存url、defauvalue的值->点确定返回主页面，参数传递过来，
+设置state的url和defaultvalue的值
+1、新页面获取语言文件
+2、获取历史记录
+3、输入框页面输入的数据和点击历史记录的数据都存到state的
+
+
+
+多语言支持    https://www.npmjs.com/package/react-native-device-info   https://www.npmjs.com/package/i18n-js  react-native-localize
+
+
+图表界面ui和18级相同 https://github.com/wuxudong/react-native-charts-wrapper/    https://blog.csdn.net/zcmain/article/details/107909374
+图表：https://www.npmjs.com/package/react-native-chart-kit
+
+
+验证URL正则表达式

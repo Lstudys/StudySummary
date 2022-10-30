@@ -1,0 +1,19 @@
+项目：主要做Pentax（原生模块+下载队列）、熟悉旧的urlping代码，尝试在旧的上面重构，做新项目，准备react和vue面经
+
+
+面经：字节面经、图解HTTP、牛客面经，前端优化：https://blog.csdn.net/woleigequshawanyier/article/details/85345095
+前端面经：https://www.kancloud.cn/freya001/interview/1239340
+
+面经：字节面经和前端面经作为主要，牛客面经做辅助
+
+算法：代码随想录算法顺序
+
+
+框架原理：react、react native、vue。抽时间学bootstrap
+
+
+上午：面经、原理、算法
+下午：项目
+晚上：面经、原理、算法、简历
+
+临近开学：复盘项目难点及准备项目问题
