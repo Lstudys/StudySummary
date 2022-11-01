@@ -443,3 +443,62 @@ var arrFrom1To100 = Array.from(new Array(100),(item, index) =>index + 1);
         return arr;
     }
 })();
+
+// 面试题
+function(arr, n){
+    let a = [];
+    let newArr = [];
+    arr.forEach((item, index) =>{
+        a.push(item);
+        if ((index + 1) / n === 0){
+            newArr.push(a);
+            a.length = 0;
+        }
+    });
+    newArr.forEach((item) =>{
+        
+    })
+}
+
+// 快排
+(function(){
+    function fastSort(arr){
+        let num = arr[0];
+        let left = 1;
+        let right = arr.length - 1;
+        while (left < right){
+            while (left < right && arr[right] >= num){
+                right --;
+            }
+            while (left < right && arr[left] <= num){
+                left ++;
+            }
+            if (left < right){
+                let n = arr[left];
+                arr[left] = arr[right];
+                arr[right] = n;
+            }
+        }
+
+        var leftArr = fastSort(arr.slice(0, left + 1));
+        var rightArr = fastSort(arr.slice(left + 1));
+        return [...leftArr, ...rightArr];
+    }
+})();
+
+// 插入排序
+(function(){
+    function sort(arr){
+        for (var i = 1; i < arr.length; i ++){
+            var j = i - 1;
+            var num = arr[i];
+            while (j > 0 && arr[j] > arr[i]){
+                arr[j + 1] = arr[j];
+                j --;
+            }
+            arr[j +  1] = num;
+        }
+
+        return arr;
+    }
+})();
